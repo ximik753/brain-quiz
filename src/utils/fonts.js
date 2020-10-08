@@ -3,5 +3,5 @@ export const fonts = {
     bold: 'montserrat-bold',
     extraBold: 'montserrat-extraBold',
     medium: 'montserrat-medium',
-    semiBold: 'montserrat-semiBold',
+    semiBold: 'montserrat-semiBold'
 }
