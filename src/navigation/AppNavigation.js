@@ -6,6 +6,7 @@ import LeaderboardScreen from '../screens/LeaderboardScreen'
 import ShopScreen from '../screens/ShopScreen'
 import { StyleSheet } from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { colors } from '../utils/colors'
 
 const TabNavigator = createMaterialBottomTabNavigator()
 
@@ -45,6 +46,6 @@ export const AppNavigation = () => (
 
 const styles = StyleSheet.create({
     barStyle: {
-        backgroundColor: '#2E1351'
+        backgroundColor: colors.menuTabColor
     }
 })

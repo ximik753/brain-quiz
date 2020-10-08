@@ -3,6 +3,7 @@ import { View, StyleSheet, Image, Text } from 'react-native'
 import AppCardStatsItem from './AppCardStatsItem'
 import AppCard from './AppCard'
 import { fonts } from '../../../utils/fonts'
+import { colors } from '../../../utils/colors'
 
 const CardStats = () => {
     return (
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         fontFamily: fonts.semiBold,
         fontSize: 18,
-        color: '#FFF'
+        color: colors.defaultFontColor
     },
     wrapper: {
         marginTop: 7,

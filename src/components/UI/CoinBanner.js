@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Image, Text } from 'react-native'
 import { fonts } from '../../utils/fonts'
+import { colors } from '../../utils/colors'
 
 const CoinBanner = () => {
     return (
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         fontFamily: fonts.bold,
         fontSize: 24,
-        color: '#FFF',
+        color: colors.defaultFontColor,
         top: '20%',
         left: '8.5%'
     }

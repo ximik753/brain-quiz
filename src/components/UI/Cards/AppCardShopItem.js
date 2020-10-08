@@ -2,6 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Image, Text } from 'react-native'
 import { fonts } from '../../../utils/fonts'
 import AppButtonOutline from '../AppButtonOutline'
+import { colors } from '../../../utils/colors'
 
 const AppCardShopItem = () => {
     return (
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     wrapperIcon: {
         width: 36,
         height: 36,
-        backgroundColor: '#4D1C8D',
+        backgroundColor: colors.shopIconBackgroundColor,
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 10
@@ -51,12 +52,12 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: fonts.bold,
         fontSize: 14,
-        color: '#FFF'
+        color: colors.defaultFontColor
     },
     description: {
         fontFamily: fonts.semiBold,
         fontSize: 12,
-        color: '#FFF'
+        color: colors.defaultFontColor
     },
     buyWrapper: {
         justifyContent: 'center',
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
     price: {
         fontFamily: fonts.bold,
         fontSize: 14,
-        color: '#FFF',
+        color: colors.defaultFontColor,
         marginRight: 5,
         marginLeft: 10
     }

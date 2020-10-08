@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native'
 import { fonts } from '../../../utils/fonts'
+import { colors } from '../../../utils/colors'
 
 const AppCardStatsItem = ({ label, value }) => {
     return (
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontFamily: fonts.bold,
-        color: '#FFF',
+        color: colors.defaultFontColor,
         fontSize: 10,
         marginBottom: 3
     },
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
     },
     value: {
         fontFamily: fonts.semiBold,
-        color: '#FFF',
+        color: colors.defaultFontColor,
         fontSize: 14,
         marginLeft: 15
     }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native'
 import { fonts } from '../../../utils/fonts'
+import { colors } from '../../../utils/colors'
 
 const AppCardLeaderboardItem = () => {
     return (
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 15,
-        backgroundColor: '#4D1C8D',
+        backgroundColor: colors.leaderboardItemBackgroundColor,
         paddingLeft: 20,
         paddingRight: 20,
         paddingTop: 5,
@@ -33,23 +34,23 @@ const styles = StyleSheet.create({
     position: {
         fontFamily: fonts.bold,
         fontSize: 18,
-        color: '#FFF',
+        color: colors.defaultFontColor,
         marginRight: 13
     },
     icon: {
-        width: 36,
-        height: 36,
+        width: 26,
+        height: 26,
         borderRadius: 75,
-        marginRight: 9
+        marginRight: 10
     },
     name: {
         fontFamily: fonts.bold,
         fontSize: 14,
-        color: '#FFF',
+        color: colors.defaultFontColor,
         marginRight: 45
     },
     iqWrapper: {
-        backgroundColor: 'rgba(209, 209, 209, .5)',
+        backgroundColor: colors.leaderboardItemIqLabelColor,
         paddingLeft: 20,
         paddingRight: 20,
         paddingTop: 5,
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     iq: {
         fontFamily: fonts.bold,
         fontSize: 14,
-        color: '#FFF'
+        color: colors.defaultFontColor
     }
 })
 

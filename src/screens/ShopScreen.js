@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { fonts } from '../utils/fonts'
 import AppCard from '../components/UI/Cards/AppCard'
 import AppCardShopItem from '../components/UI/Cards/AppCardShopItem'
+import { colors } from '../utils/colors'
 
 const ShopScreen = () => {
     return (
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#421B75'
+        backgroundColor: colors.defaultBackgroundColor
     },
     container: {
         maxWidth: 290,
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: fonts.semiBold,
         fontSize: 30,
-        color: '#FFF',
+        color: colors.defaultFontColor,
         marginTop: 20,
         marginBottom: 20
     }

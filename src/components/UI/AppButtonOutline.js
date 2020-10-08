@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { fonts } from '../../utils/fonts'
+import { colors } from '../../utils/colors'
 
 const AppButtonOutline = ({ text }) => {
     return (
@@ -22,12 +23,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 50,
         borderWidth: 1,
-        borderColor: '#E0E0E0'
+        borderColor: colors.defaultFontColor
     },
     text: {
         fontFamily: fonts.semiBold,
         fontSize: 14,
-        color: '#FFF'
+        color: colors.defaultFontColor
     }
 })
 

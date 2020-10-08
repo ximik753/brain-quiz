@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Image, Text } from 'react-native'
 import { fonts } from '../../../utils/fonts'
+import { colors } from '../../../utils/colors'
 
 const AppCardBoosterItem = ({ label, count, icon }) => {
     return (
@@ -33,12 +34,12 @@ const styles = StyleSheet.create({
     },
     label: {
         fontFamily: fonts.medium,
-        color: '#FFF',
+        color: colors.defaultFontColor,
         fontSize: 11
     },
     count: {
         fontFamily: fonts.semiBold,
-        color: '#FFC634',
+        color: colors.boosterCountColor,
         fontSize: 18
     }
 })

@@ -4,6 +4,7 @@ import { fonts } from '../utils/fonts'
 import CardStats from '../components/UI/Cards/CardStats'
 import CardBoosters from '../components/UI/Cards/CardBoosters'
 import CoinBanner from '../components/UI/CoinBanner'
+import { colors } from '../utils/colors'
 
 const MainScreen = () => {
     return (
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#421B75'
+        backgroundColor: colors.defaultBackgroundColor
     },
     container: {
         maxWidth: 290,
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         fontFamily: fonts.semiBold,
         fontSize: 18,
-        color: '#FFF'
+        color: colors.defaultFontColor
     },
     timerWrapper: {
         position: 'relative'
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     timer: {
         fontFamily: fonts.black,
         fontSize: 24,
-        color: '#FFF',
+        color: colors.defaultFontColor,
         zIndex: 2
     },
     timerParticle: {

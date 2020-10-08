@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import AppCard from './AppCard'
 import { fonts } from '../../../utils/fonts'
 import AppCardBoosterItem from './AppCardBosterItem'
+import { colors } from '../../../utils/colors'
 
 const CardBoosters = () => {
     return (
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: fonts.semiBold,
-        color: '#FFF',
+        color: colors.defaultFontColor,
         fontSize: 18
     },
     wrapper: {

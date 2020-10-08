@@ -1,7 +1,14 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
+import { colors } from '../../../utils/colors'
 
-const AppCard = ({ borderColor = '#F9C601', children, style }) => <View style={{ ...styles.card, ...style, borderColor }}>{children}</View>
+const AppCard = ({ borderColor = colors.yellowBorderColor, children, style }) => (
+    <View
+        style={{ ...styles.card, ...style, borderColor }}
+    >
+        {children}
+    </View>
+)
 
 const styles = StyleSheet.create({
     card: {
@@ -14,7 +21,7 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#34155B',
+        backgroundColor: colors.cardBackgroundColor,
         position: 'relative'
     }
 })

@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import AppCard from '../components/UI/Cards/AppCard'
 import AppCardLeaderboardItem from '../components/UI/Cards/AppCardLeaderboardItem'
 import { fonts } from '../utils/fonts'
+import { colors } from '../utils/colors'
 
 const LeaderboardScreen = () => {
     return (
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#421B75'
+        backgroundColor: colors.defaultBackgroundColor
     },
     container: {
         maxWidth: 290,
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: fonts.semiBold,
         fontSize: 30,
-        color: '#FFF',
+        color: colors.defaultFontColor,
         marginTop: 20,
         marginBottom: 20
     }
