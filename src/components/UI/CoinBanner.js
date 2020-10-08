@@ -1,16 +1,23 @@
 import React from 'react'
-import { View, StyleSheet, Image, Text } from 'react-native'
+import { View, StyleSheet, Image, Text, TouchableNativeFeedback } from 'react-native'
 import { fonts } from '../../utils/fonts'
 import { colors } from '../../utils/colors'
+import { useLinkTo } from '@react-navigation/native'
 
 const CoinBanner = () => {
+    const linkTo = useLinkTo()
+
     return (
-        <View style={styles.wrapper}>
-            <Image
-                source={require('../../assets/images/main/coin_banner.png')}
-            />
-            <Text style={styles.count}>5000</Text>
-        </View>
+        <TouchableNativeFeedback
+            onPress={() => linkTo('/Shop')}
+        >
+            <View style={styles.wrapper}>
+                <Image
+                    source={require('../../assets/images/main/coin_banner.png')}
+                />
+                <Text style={styles.count}>5000</Text>
+            </View>
+        </TouchableNativeFeedback>
     )
 }
 
