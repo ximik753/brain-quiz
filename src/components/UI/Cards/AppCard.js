@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         paddingBottom: 15,
         paddingLeft: 15,
         paddingRight: 15,
-        width: '100%',
+        width: 290,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.cardBackgroundColor,

@@ -17,7 +17,8 @@ const CoinBanner = () => {
 const styles = StyleSheet.create({
     wrapper: {
         position: 'relative',
-        marginTop: 23
+        marginTop: 25,
+        marginBottom: 20
     },
     count: {
         position: 'absolute',
