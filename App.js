@@ -1,14 +1,6 @@
 import React from 'react'
-import {StyleSheet, View, Text } from 'react-native'
+import { AppNavigation } from './src/navigation/AppNavigation'
 
-const App = () => {
-    return (
-        <View>
-            <Text>Brain Quiz</Text>
-        </View>
-    )
-}
-
-const styles = StyleSheet.create({})
+const App = () => <AppNavigation/>
 
 export default App
