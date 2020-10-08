@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.brainquiz"
+        applicationId "com.ximik.brainquiz"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

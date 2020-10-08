@@ -1,4 +1,4 @@
-package com.brainquiz;
+package com.ximik.brainquiz;
 
 import com.facebook.react.ReactActivity;
 
