@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native'
 import { fonts } from '../utils/fonts'
 import AppInputText from '../components/UI/AppInputText'
 import AppButton from '../components/UI/AppButton'
 import { colors } from '../utils/colors'
 import AppParticles from '../components/UI/AppParticles'
+import AppSelectSex from '../components/UI/AppSelectSex'
 
 const RegisterScreen = () => {
+    const [sex, setSex] = useState(0)
+
     return (
         <View style={styles.wrapper}>
             <AppParticles/>
@@ -17,6 +20,7 @@ const RegisterScreen = () => {
                     <AppInputText label="Логин"/>
                     <AppInputText label="Пароль"/>
                     <AppInputText label="Повторите пароль"/>
+                    <AppSelectSex changeHandler={setSex}/>
                 </View>
                 <AppButton text="Создать аккаунт" styleButton={styles.button}/>
             </View>
@@ -46,8 +50,8 @@ const styles = StyleSheet.create({
         marginTop: 16
     },
     inputsWrapper: {
-        marginTop: 30,
-        height: 250,
+        marginTop: 20,
+        height: 300,
         justifyContent: 'space-between'
     },
     button: {
