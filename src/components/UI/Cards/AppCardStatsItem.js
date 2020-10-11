@@ -1,17 +1,14 @@
 import React from 'react'
-import { View, StyleSheet, Text, Image } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 import { fonts } from '../../../utils/fonts'
 import { colors } from '../../../utils/colors'
 
-const AppCardStatsItem = ({ label, value }) => {
+const AppCardStatsItem = ({ label, value, icon }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.label}>{label}</Text>
             <View style={styles.wrapper}>
-                <Image
-                    style={styles.icon}
-                    source={require('../../../assets/images/main/stats/icon_games.png')}
-                />
+                {icon}
                 <Text style={styles.value}>{value}</Text>
             </View>
         </View>

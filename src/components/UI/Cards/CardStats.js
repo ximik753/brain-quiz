@@ -2,6 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Image, Text } from 'react-native'
 import AppCardStatsItem from './AppCardStatsItem'
 import AppCard from './AppCard'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { fonts } from '../../../utils/fonts'
 import { colors } from '../../../utils/colors'
 
@@ -17,18 +18,17 @@ const CardStats = () => {
                 <AppCardStatsItem
                     label="Сыграно игр"
                     value={9}
+                    icon={<Image source={require('../../../assets/images/main/stats/icon_games.png')}/>}
                 />
                 <AppCardStatsItem
-                    label="Сыграно игр"
+                    label="Побед"
                     value={9}
+                    icon={<MaterialIcons name="emoji-events" color={colors.defaultFontColor} size={19}/>}
                 />
                 <AppCardStatsItem
-                    label="Сыграно игр"
+                    label="IQ"
                     value={9}
-                />
-                <AppCardStatsItem
-                    label="Сыграно игр"
-                    value={9}
+                    icon={<Image source={require('../../../assets/images/main/stats/icon_brain.png')}/>}
                 />
             </View>
         </AppCard>
