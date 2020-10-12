@@ -4,15 +4,18 @@ import AppInputText from '../components/UI/AppInputText'
 import AuthContainer from '../components/AuthContainer'
 import { useHttp } from '../hooks/http.hook'
 import { Controller, useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { setUserToken } from '../store/actions/user'
 
 const LoginScreen = () => {
     const { post } = useHttp()
     const { control, handleSubmit, formState } = useForm({ mode: 'onChange' })
+    const dispatch = useDispatch()
 
     const submitHandler = async (value) => {
         try {
-            console.log(await post('/auth/login', value))
-            //TODO adding token to storage
+            const { token } = await post('/auth/login', value)
+            dispatch(setUserToken(token))
         } catch (e) {
             //TODO adding error output
         }
@@ -28,7 +31,7 @@ const LoginScreen = () => {
         >
             <Controller
                 control={control}
-                name="login"
+                name="name"
                 render={({ onChange }) => (
                     <AppInputText
                         label="Логин"

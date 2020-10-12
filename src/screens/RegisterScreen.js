@@ -4,16 +4,19 @@ import AppSelectSex from '../components/UI/AppSelectSex'
 import AuthContainer from '../components/AuthContainer'
 import { useHttp } from '../hooks/http.hook'
 import { useForm, Controller } from 'react-hook-form'
+import { setUserToken } from '../store/actions/user'
+import { useDispatch } from 'react-redux'
 
 const RegisterScreen = () => {
     const { post } = useHttp()
     const { control, watch, handleSubmit, formState } = useForm({ mode: 'onChange' })
     const [sex, setSex] = useState(0)
+    const dispatch = useDispatch()
 
     const submitHandler = async (value) => {
         try {
-            await post('/auth/register', { ...value, sex })
-            //TODO adding token to storage
+            const { token } = await post('/auth/register', { ...value, sex })
+            dispatch(setUserToken(token))
         } catch (e) {
             //TODO adding error output
         }
@@ -27,7 +30,7 @@ const RegisterScreen = () => {
         >
             <Controller
                 control={control}
-                name="login"
+                name="name"
                 render={({ onChange }) => (
                     <AppInputText
                         label="Логин"

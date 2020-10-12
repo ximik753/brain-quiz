@@ -5,29 +5,33 @@ import AppCard from './AppCard'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { fonts } from '../../../utils/fonts'
 import { colors } from '../../../utils/colors'
+import { useSelector } from 'react-redux'
 
 const CardStats = () => {
+    const { name, stats } = useSelector(state => state.user)
+    const { gameTotal, gameWinner, iq } = stats
+
     return (
         <AppCard style={styles.cardStats}>
             <Image
                 style={styles.userIcon}
                 source={{ uri: 'https://avatars3.githubusercontent.com/u/34097384?s=460&u=3b74d5a77b93a2f4ce535f68ec659f5e92772bc0&v=4' }}
             />
-            <Text style={styles.userName}>Ximik</Text>
+            <Text style={styles.userName}>{name}</Text>
             <View style={styles.wrapper}>
                 <AppCardStatsItem
                     label="Сыграно игр"
-                    value={9}
+                    value={gameTotal}
                     icon={<Image source={require('../../../assets/images/main/stats/icon_games.png')}/>}
                 />
                 <AppCardStatsItem
                     label="Побед"
-                    value={9}
+                    value={gameWinner}
                     icon={<MaterialIcons name="emoji-events" color={colors.defaultFontColor} size={19}/>}
                 />
                 <AppCardStatsItem
                     label="IQ"
-                    value={9}
+                    value={iq}
                     icon={<Image source={require('../../../assets/images/main/stats/icon_brain.png')}/>}
                 />
             </View>

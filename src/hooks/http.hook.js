@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux'
+
 export const useHttp = () => {
     const baseUrl = 'http://192.168.1.68:3000/api'
 
@@ -5,11 +7,14 @@ export const useHttp = () => {
         const headers = {}
 
         if (isAuth) {
-            headers.Authorization = 'Bearer'
+            headers.Authorization = `Bearer ${token}`
         }
 
-        const response = await fetch(`${baseUrl}${path}`, { headers })
-        return await response.json()
+        const data = await fetch(`${baseUrl}${path}`, { headers })
+        const { response } = await data.json()
+
+        if (response)
+            return response
     }
 
     const post = async (path, body = null, isAuth) => {
@@ -21,11 +26,14 @@ export const useHttp = () => {
         }
 
         if (isAuth) {
-            headers.Authorization = 'Bearer'
+            headers.Authorization = `Bearer ${token}`
         }
 
-        const response = await fetch(`${baseUrl}${path}`, { method: 'POST', headers, body })
-        return await response.json()
+        const data = await fetch(`${baseUrl}${path}`, { method: 'POST', headers, body })
+        const { response } = await data.json()
+
+        if (response)
+            return response
     }
 
     return { get, post }

@@ -3,9 +3,11 @@ import { View, StyleSheet, Image, Text, TouchableNativeFeedback } from 'react-na
 import { fonts } from '../../utils/fonts'
 import { colors } from '../../utils/colors'
 import { useLinkTo } from '@react-navigation/native'
+import { useSelector } from 'react-redux'
 
 const CoinBanner = () => {
     const linkTo = useLinkTo()
+    const coins = useSelector(state => state.user.coins)
 
     return (
         <TouchableNativeFeedback
@@ -15,7 +17,7 @@ const CoinBanner = () => {
                 <Image
                     source={require('../../assets/images/main/coin_banner.png')}
                 />
-                <Text style={styles.count}>5000</Text>
+                <Text style={styles.count}>{coins}</Text>
             </View>
         </TouchableNativeFeedback>
     )
