@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import AppCard from './AppCard'
 import { fonts } from '../../../utils/fonts'
@@ -22,12 +22,14 @@ const CardBoosters = () => {
 
     if (boosters.length) {
         content = (
-            boosters.map(booster => (
-                <AppCardBoosterItem
-                    label="Жизни"
-                    count={9}
-                    icon={require('../../../assets/images/main/boosters/icon_heart.png')}
-                />
+            boosters.map(({ count, booster }) => (
+                <Fragment key={booster.title}>
+                    <AppCardBoosterItem
+                        label={booster.title}
+                        count={count}
+                        icon={`http://192.168.1.69:3000/images/${booster.icon}.png`}
+                    />
+                </Fragment>
             ))
         )
     }
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
     },
     wrapper: {
         flexWrap: 'wrap',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-between',
         flexDirection: 'row',
         marginTop: 10
     },

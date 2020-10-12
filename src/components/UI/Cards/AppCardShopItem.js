@@ -3,26 +3,40 @@ import { View, StyleSheet, Image, Text } from 'react-native'
 import { fonts } from '../../../utils/fonts'
 import AppButtonOutline from '../AppButtonOutline'
 import { colors } from '../../../utils/colors'
+import { useHttp } from '../../../hooks/http.hook'
+import { useDispatch } from 'react-redux'
+import { updateBoosters } from '../../../store/actions/user'
 
-const AppCardShopItem = () => {
+const AppCardShopItem = ({ cost, icon, title, description, id }) => {
+    const { post } = useHttp()
+    const dispatch = useDispatch()
+
+    const pressHandler = async () => {
+        const boosters = await post(`/shop/${id}`, null, true)
+        dispatch(updateBoosters(boosters))
+    }
+
     return (
         <View style={styles.wrapper}>
             <View style={styles.wrapperIcon}>
                 <Image
-                    source={require('../../../assets/images/main/boosters/icon_heart.png')}
+                    source={{
+                        uri: icon
+                    }}
                     style={styles.icon}
                 />
             </View>
             <View>
                 <View>
-                    <Text style={styles.title}>Жизнь</Text>
-                    <Text style={styles.description}>Описание</Text>
+                    <Text style={styles.title}>{title}</Text>
+                    <Text style={styles.description}>{description}</Text>
                 </View>
                 <View style={styles.buyWrapper}>
                     <AppButtonOutline
                         text="Купить"
+                        pressHandler={pressHandler}
                     />
-                    <Text style={styles.price}>2200</Text>
+                    <Text style={styles.price}>{cost}</Text>
                     <Image
                         source={require('../../../assets/images/main/icon_coin.png')}
                     />
@@ -35,7 +49,9 @@ const AppCardShopItem = () => {
 const styles = StyleSheet.create({
     wrapper: {
         flexDirection: 'row',
-        marginBottom: 30
+        justifyContent: 'center',
+        marginBottom: 30,
+        width: 200
     },
     wrapperIcon: {
         width: 36,
@@ -43,7 +59,8 @@ const styles = StyleSheet.create({
         backgroundColor: colors.shopIconBackgroundColor,
         justifyContent: 'center',
         alignItems: 'center',
-        marginRight: 10
+        marginRight: 10,
+        borderRadius: 5
     },
     icon: {
         width: 25,
@@ -51,19 +68,20 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: fonts.bold,
-        fontSize: 14,
+        fontSize: 16,
         color: colors.defaultFontColor
     },
     description: {
         fontFamily: fonts.semiBold,
-        fontSize: 12,
+        fontSize: 14,
         color: colors.defaultFontColor
     },
     buyWrapper: {
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        marginTop: 5
+        marginTop: 5,
+        width: '80%'
     },
     price: {
         fontFamily: fonts.bold,
