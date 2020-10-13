@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         color: colors.defaultFontColor
     },
     description: {
-        fontFamily: fonts.semiBold,
+        fontFamily: fonts.medium,
         fontSize: 14,
         color: colors.defaultFontColor
     },
@@ -81,12 +81,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        marginTop: 5,
+        marginTop: 7,
         width: '80%'
     },
     price: {
         fontFamily: fonts.bold,
-        fontSize: 14,
+        fontSize: 16,
         color: colors.defaultFontColor,
         marginRight: 5,
         marginLeft: 10

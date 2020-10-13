@@ -5,10 +5,14 @@ import AppCard from '../components/UI/Cards/AppCard'
 import AppCardShopItem from '../components/UI/Cards/AppCardShopItem'
 import { colors } from '../utils/colors'
 import { useHttp } from '../hooks/http.hook'
+import { useSelector } from 'react-redux'
+import AppCoinLabel from '../components/UI/AppCoinLabel'
 
 const ShopScreen = () => {
     const { get } = useHttp()
     const [items, setItems] = useState([])
+    const coins = useSelector(state => state.user.coins)
+
     const fetchData = useCallback(async () => await get('/shop', true), [get])
 
     useEffect(() => {
@@ -21,6 +25,7 @@ const ShopScreen = () => {
         <ScrollView contentContainerStyle={styles.wrapper}>
             <View style={styles.container}>
                 <Text style={styles.title}>Магазин</Text>
+                <AppCoinLabel coins={coins}/>
                 <AppCard>
                     {
                         items.map(({ title, description, cost, icon, id }) => (
@@ -56,8 +61,7 @@ const styles = StyleSheet.create({
         fontFamily: fonts.semiBold,
         fontSize: 30,
         color: colors.defaultFontColor,
-        marginTop: 20,
-        marginBottom: 20
+        marginTop: 20
     }
 })
 
