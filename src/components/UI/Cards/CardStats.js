@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Image, Text, TouchableNativeFeedback } from 'react-native'
+import { View, StyleSheet, Image, Text } from 'react-native'
 import AppCardStatsItem from './AppCardStatsItem'
 import AppCard from './AppCard'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
@@ -7,31 +7,20 @@ import { fonts } from '../../../utils/fonts'
 import { colors } from '../../../utils/colors'
 import { useSelector } from 'react-redux'
 import { avatars } from '../../../utils/avatars'
+import EditUserAvatar from '../../EditUserAvatar'
 
 const CardStats = () => {
-    const { name, stats, icon } = useSelector(state => state.user)
+    const { name, stats, avatar } = useSelector(state => state.user)
     const { gameTotal, gameWinner, iq } = stats
 
     return (
         <AppCard style={styles.cardStats}>
             <Image
                 style={styles.avatar}
-                source={avatars[icon]}
+                source={avatars[avatar] || avatars[0]}
                 resizeMode="contain"
             />
-            <View style={[
-                { transform: [{ translateX: 10 }, { translateY: -5 }] }
-            ]}>
-                <TouchableNativeFeedback
-                    onPress={() => console.log(123)}
-                >
-                    <MaterialIcons
-                        name="settings"
-                        color={colors.defaultFontColor}
-                        size={19}
-                    />
-                </TouchableNativeFeedback>
-            </View>
+            <EditUserAvatar/>
             <Text style={styles.name}>{name}</Text>
             <View style={styles.wrapper}>
                 <AppCardStatsItem

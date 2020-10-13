@@ -1,4 +1,4 @@
-import { SET_TOKEN, UPDATE_BOOSTERS, USER_INIT } from '../types'
+import { SET_TOKEN, UPDATE_AVATAR, UPDATE_BOOSTERS, USER_INIT } from '../types'
 
 const initialState = {
     name: '',
@@ -13,6 +13,7 @@ const handlers = {
     [USER_INIT]: (state, { payload }) => ({ ...state, ...payload }),
     [SET_TOKEN]: (state, { token }) => ({ ...state, token }),
     [UPDATE_BOOSTERS]: (state, { boosters }) => ({ ...state, boosters }),
+    [UPDATE_AVATAR]: (state, { id }) => ({ ...state, avatar: id }),
     DEFAULT: state => state
 }
 
