@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 export const useHttp = () => {
     const token = useSelector(state => state.user.token)
-    const baseUrl = 'http://192.168.1.69:3000/api'
+    const baseUrl = 'https://brain-quiz-server.herokuapp.com/api'
     const [loading, setLoading] = useState(false)
 
     const get = async (path, isAuth = false) => {
