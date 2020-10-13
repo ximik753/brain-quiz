@@ -8,7 +8,7 @@ const AppButton = ({ text, pressHandler, disabled, loading, styleButton }) => {
     return (
         <Button
             style={{ ...styles.button, ...styleButton }}
-            disabled={disabled || false}
+            disabled={(disabled || loading) || false}
             loading={loading || false}
             onPress={pressHandler}
             uppercase={false}

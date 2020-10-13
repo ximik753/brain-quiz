@@ -4,7 +4,7 @@ import AppButton from './UI/AppButton'
 import { colors } from '../utils/colors'
 import { fonts } from '../utils/fonts'
 
-const AuthContainer = ({ children, textButton, pressHandler, styleInputsWrapper, verticalOffset, isValid }) => {
+const AuthContainer = ({ children, textButton, pressHandler, styleInputsWrapper, verticalOffset, isValid, loading }) => {
     const [keyboardOpen, setKeyboardOpen] = useState(false)
 
     const handleKeyboardShowToggle = () => setKeyboardOpen(prevState => !prevState)
@@ -37,6 +37,7 @@ const AuthContainer = ({ children, textButton, pressHandler, styleInputsWrapper,
                         styleButton={keyboardOpen ? styles.buttonKeyboardOpen : styles.button}
                         pressHandler={pressHandler}
                         disabled={!isValid}
+                        loading={loading}
                     />
                 </View>
             </KeyboardAvoidingView>

@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux'
 import { setUserToken } from '../store/actions/user'
 
 const LoginScreen = () => {
-    const { post } = useHttp()
+    const { post, loading } = useHttp()
     const { control, handleSubmit, formState } = useForm({ mode: 'onChange' })
     const dispatch = useDispatch()
 
@@ -28,6 +28,7 @@ const LoginScreen = () => {
             verticalOffset={-140}
             pressHandler={handleSubmit(submitHandler)}
             isValid={formState.isValid}
+            loading={loading}
         >
             <Controller
                 control={control}

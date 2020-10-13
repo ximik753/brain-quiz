@@ -8,7 +8,7 @@ import { setUserToken } from '../store/actions/user'
 import { useDispatch } from 'react-redux'
 
 const RegisterScreen = () => {
-    const { post } = useHttp()
+    const { post, loading } = useHttp()
     const { control, watch, handleSubmit, formState } = useForm({ mode: 'onChange' })
     const [sex, setSex] = useState(0)
     const dispatch = useDispatch()
@@ -27,6 +27,7 @@ const RegisterScreen = () => {
             textButton="Создать аккаунт"
             pressHandler={handleSubmit(submitHandler)}
             isValid={formState.isValid}
+            loading={loading}
         >
             <Controller
                 control={control}

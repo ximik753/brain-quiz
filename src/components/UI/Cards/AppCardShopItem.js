@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux'
 import { updateBoosters } from '../../../store/actions/user'
 
 const AppCardShopItem = ({ cost, icon, title, description, id }) => {
-    const { post } = useHttp()
+    const { post, loading } = useHttp()
     const dispatch = useDispatch()
 
     const pressHandler = async () => {
@@ -35,6 +35,7 @@ const AppCardShopItem = ({ cost, icon, title, description, id }) => {
                     <AppButtonOutline
                         text="Купить"
                         pressHandler={pressHandler}
+                        loading={loading}
                     />
                     <Text style={styles.price}>{cost}</Text>
                     <Image

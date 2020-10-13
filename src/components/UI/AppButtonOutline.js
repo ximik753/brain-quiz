@@ -4,7 +4,7 @@ import { fonts } from '../../utils/fonts'
 import { colors } from '../../utils/colors'
 import { Button } from 'react-native-paper'
 
-const AppButtonOutline = ({ text, pressHandler, loading }) => {
+const AppButtonOutline = ({ text, pressHandler, loading, disabled }) => {
     return (
         <Button
             style={styles.button}
@@ -12,6 +12,7 @@ const AppButtonOutline = ({ text, pressHandler, loading }) => {
             uppercase={false}
             labelStyle={styles.text}
             loading={loading || false}
+            disabled={(disabled || loading) || false}
             color="transparent"
             mode="contained"
         >
