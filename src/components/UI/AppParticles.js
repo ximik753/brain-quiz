@@ -4,8 +4,8 @@ import { Image, StyleSheet } from 'react-native'
 const AppParticles = () => {
     return (
         <>
-            <Image style={styles.partialOne} source={require('../../assets/images/authorization/particles/part_2.png')}/>
-            <Image style={styles.partialTwo} source={require('../../assets/images/authorization/particles/part_3.png')}/>
+            <Image style={styles.partialOne} source={require('../../assets/images/authorization/particles/part.png')}/>
+            <Image style={styles.partialTwo} source={require('../../assets/images/authorization/particles/part_2.png')}/>
         </>
     )
 }
