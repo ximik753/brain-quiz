@@ -6,9 +6,11 @@ import AppCardBoosterItem from './AppCardBosterItem'
 import { colors } from '../../../utils/colors'
 import { useSelector } from 'react-redux'
 import AppButton from '../AppButton'
+import { useLinkTo } from '@react-navigation/native'
 
 const CardBoosters = () => {
     const boosters = useSelector(state => state.user.boosters)
+    const linkTo = useLinkTo()
 
     let content = (
         <View>
@@ -16,6 +18,7 @@ const CardBoosters = () => {
             <AppButton
                 text="Преобрести"
                 styleButton={styles.boostersNotFoundButton}
+                pressHandler={() => linkTo('/Shop')}
             />
         </View>
     )
