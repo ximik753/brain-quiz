@@ -1,5 +1,5 @@
 import React, { Fragment, useCallback, useEffect, useState } from 'react'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from 'react-native'
 import AppCard from '../components/UI/Cards/AppCard'
 import AppCardLeaderboardItem from '../components/UI/Cards/AppCardLeaderboardItem'
 import { fonts } from '../utils/fonts'
@@ -18,23 +18,34 @@ const LeaderboardScreen = () => {
             .catch(e => console.log(e))
     }, [])
 
+    let content = (
+        <ActivityIndicator
+            color={colors.boosterCountColor}
+            size="small"
+        />
+    )
+
+    if (items.length) {
+        content = (
+            items.map(({ name, stats, avatar }, index) => (
+                <Fragment key={name}>
+                    <AppCardLeaderboardItem
+                        name={name}
+                        avatar={avatar}
+                        iq={stats.iq}
+                        position={index + 1}
+                    />
+                </Fragment>
+            ))
+        )
+    }
+
     return (
         <ScrollView contentContainerStyle={styles.wrapper}>
             <View style={styles.container}>
                 <Text style={styles.title}>Таблица лидеров</Text>
                 <AppCard>
-                    {
-                        items.map(({ name, stats, avatar }, index) => (
-                            <Fragment key={name}>
-                                <AppCardLeaderboardItem
-                                    name={name}
-                                    avatar={avatar}
-                                    iq={stats.iq}
-                                    position={index + 1}
-                                />
-                            </Fragment>
-                        ))
-                    }
+                    {content}
                 </AppCard>
             </View>
         </ScrollView>

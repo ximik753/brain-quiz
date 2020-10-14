@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { View, StyleSheet, ScrollView, ActivityIndicator } from 'react-native'
 import CardStats from '../components/UI/Cards/CardStats'
 import CardBoosters from '../components/UI/Cards/CardBoosters'
 import CoinBanner from '../components/UI/CoinBanner'
@@ -11,7 +11,7 @@ import { useHttp } from '../hooks/http.hook'
 import { userInit } from '../store/actions/user'
 
 const MainScreen = () => {
-    const { get } = useHttp()
+    const { get, loading } = useHttp()
     const dispatch = useDispatch()
 
     const fetchData = useCallback(async () => await get('/user', true), [get])
@@ -22,18 +22,33 @@ const MainScreen = () => {
             .catch(e => console.log(e))
     }, [])
 
+    let content = (
+        <>
+            <AppTimer/>
+            <CardStats/>
+            <CardBoosters/>
+            <AppCarousel/>
+            <CoinBanner/>
+        </>
+    )
+
+    if (loading) {
+        content = (
+            <ActivityIndicator
+                color={colors.boosterCountColor}
+                size="large"
+            />
+        )
+    }
+
     return (
         <View style={styles.wrapper}>
             <ScrollView
-                contentContainerStyle={styles.container}
+                contentContainerStyle={loading ? styles.containerLoading : styles.container}
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
             >
-                <AppTimer/>
-                <CardStats/>
-                <CardBoosters/>
-                <AppCarousel/>
-                <CoinBanner/>
+                {content}
             </ScrollView>
         </View>
     )
@@ -49,6 +64,11 @@ const styles = StyleSheet.create({
         maxWidth: 290,
         width: '100%',
         alignItems: 'center'
+    },
+    containerLoading: {
+        alignItems: 'center',
+        flex: 1,
+        justifyContent: 'center'
     }
 })
 

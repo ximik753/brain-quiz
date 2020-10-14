@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState, Fragment } from 'react'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View, ActivityIndicator } from 'react-native'
 import { fonts } from '../utils/fonts'
 import AppCard from '../components/UI/Cards/AppCard'
 import AppCardShopItem from '../components/UI/Cards/AppCardShopItem'
@@ -21,25 +21,36 @@ const ShopScreen = () => {
             .catch(e => console.log(e))
     }, [])
 
+    let content = (
+        <ActivityIndicator
+            color={colors.boosterCountColor}
+            size="small"
+        />
+    )
+
+    if (items.length) {
+        content = (
+            items.map(({ title, description, cost, icon, id }) => (
+                <Fragment key={id}>
+                    <AppCardShopItem
+                        title={title}
+                        description={description}
+                        cost={cost}
+                        icon={icon}
+                        id={id}
+                    />
+                </Fragment>
+            ))
+        )
+    }
+
     return (
         <ScrollView contentContainerStyle={styles.wrapper}>
             <View style={styles.container}>
                 <Text style={styles.title}>Магазин</Text>
                 <AppCoinLabel coins={coins}/>
                 <AppCard>
-                    {
-                        items.map(({ title, description, cost, icon, id }) => (
-                            <Fragment key={id}>
-                                <AppCardShopItem
-                                    title={title}
-                                    description={description}
-                                    cost={cost}
-                                    icon={icon}
-                                    id={id}
-                                />
-                            </Fragment>
-                        ))
-                    }
+                    {content}
                 </AppCard>
             </View>
         </ScrollView>
