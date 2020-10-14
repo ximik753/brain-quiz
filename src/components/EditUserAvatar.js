@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, TouchableNativeFeedback } from 'react-native'
+import { View, TouchableNativeFeedback } from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { colors } from '../utils/colors'
 import ModalEditUserAvatar from './ModalEditUserAvatar'
@@ -27,7 +27,5 @@ const EditUserAvatar = () => {
         </View>
     )
 }
-
-const styles = StyleSheet.create({})
 
 export default EditUserAvatar

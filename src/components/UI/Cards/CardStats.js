@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
         top: '-12%'
     },
     name: {
-        marginTop: 15,
         fontFamily: fonts.semiBold,
         fontSize: 18,
         color: colors.defaultFontColor
