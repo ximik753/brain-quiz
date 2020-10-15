@@ -35,7 +35,7 @@ const MainScreen = () => {
     if (loading) {
         content = (
             <ActivityIndicator
-                color={colors.boosterCountColor}
+                color={colors.loaderColor}
                 size="large"
             />
         )

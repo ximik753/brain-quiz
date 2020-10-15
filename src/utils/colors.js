@@ -7,5 +7,6 @@ export const colors = {
     boosterCountColor: '#FFC634',
     shopIconBackgroundColor: '#4D1C8D',
     leaderboardItemBackgroundColor: '#4D1C8D',
-    leaderboardItemIqLabelColor: '#4D1C8D'
+    leaderboardItemIqLabelColor: '#4D1C8D',
+    loaderColor: '#FFC634'
 }

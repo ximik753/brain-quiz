@@ -20,7 +20,7 @@ const LeaderboardScreen = () => {
 
     let content = (
         <ActivityIndicator
-            color={colors.boosterCountColor}
+            color={colors.loaderColor}
             size="small"
         />
     )
