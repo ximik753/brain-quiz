@@ -1,6 +1,7 @@
 export const colors = {
     defaultFontColor: '#FFF',
     defaultBackgroundColor: '#421B75',
+    loadingBackgroundColor: '#2C1747',
     menuTabColor: '#2E1351',
     yellowBorderColor: '#FFC634',
     cardBackgroundColor: '#34155B',

@@ -6,15 +6,18 @@ import { useHttp } from '../hooks/http.hook'
 import { Controller, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { setUserToken } from '../store/actions/user'
+import { useLogin } from '../hooks/login.hook'
 
 const LoginScreen = () => {
     const { post, loading } = useHttp()
+    const { registerToken } = useLogin()
     const { control, handleSubmit, formState } = useForm({ mode: 'onChange' })
     const dispatch = useDispatch()
 
     const submitHandler = async (value) => {
         try {
             const { token } = await post('/auth/login', value)
+            await registerToken(token)
             dispatch(setUserToken(token))
         } catch (e) {
             //TODO adding error output
