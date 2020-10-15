@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 15,
-        backgroundColor: colors.leaderboardItemBackgroundColor,
+        backgroundColor: colors.cardBackgroundColor,
         paddingVertical: 5,
         paddingHorizontal: 20,
         borderRadius: 60,
