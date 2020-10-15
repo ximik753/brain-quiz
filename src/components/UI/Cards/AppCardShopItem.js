@@ -26,7 +26,7 @@ const AppCardShopItem = ({ cost, icon, title, description, id }) => {
                     style={styles.icon}
                 />
             </View>
-            <View>
+            <View style={styles.wrapperInfo}>
                 <View>
                     <Text style={styles.title}>{title}</Text>
                     <Text style={styles.description}>{description}</Text>
@@ -51,8 +51,13 @@ const styles = StyleSheet.create({
     wrapper: {
         flexDirection: 'row',
         justifyContent: 'center',
-        marginBottom: 30,
-        width: 200
+        alignItems: 'flex-start',
+        marginBottom: 20,
+        width: 290,
+        paddingVertical: 20,
+        paddingHorizontal: 20,
+        backgroundColor: colors.cardBackgroundColor,
+        borderRadius: 20
     },
     wrapperIcon: {
         width: 36,
@@ -60,8 +65,11 @@ const styles = StyleSheet.create({
         backgroundColor: colors.shopIconBackgroundColor,
         justifyContent: 'center',
         alignItems: 'center',
-        marginRight: 10,
+        marginRight: 15,
         borderRadius: 5
+    },
+    wrapperInfo: {
+      width: 200
     },
     icon: {
         width: 25,
@@ -69,12 +77,12 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: fonts.bold,
-        fontSize: 16,
+        fontSize: 14,
         color: colors.defaultFontColor
     },
     description: {
         fontFamily: fonts.medium,
-        fontSize: 14,
+        fontSize: 12,
         color: colors.defaultFontColor
     },
     buyWrapper: {
