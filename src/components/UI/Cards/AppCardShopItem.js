@@ -1,19 +1,31 @@
 import React from 'react'
-import { View, StyleSheet, Image, Text } from 'react-native'
+import { View, StyleSheet, Image, Text, ToastAndroid } from 'react-native'
 import { fonts } from '../../../utils/fonts'
 import AppButtonOutline from '../AppButtonOutline'
 import { colors } from '../../../utils/colors'
 import { useHttp } from '../../../hooks/http.hook'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { updateBoosters } from '../../../store/actions/user'
+import { useAlert } from '../../../hooks/alert.hook'
 
 const AppCardShopItem = ({ cost, icon, title, description, id }) => {
     const { post, loading } = useHttp()
+    const { create } = useAlert()
     const dispatch = useDispatch()
+    const coins = useSelector(state => state.user.coins)
 
     const pressHandler = async () => {
-        const boosters = await post(`/shop/${id}`, null, true)
-        dispatch(updateBoosters(boosters))
+        try {
+            if (coins < cost) {
+                return create('Недостаточно средств для покупки')
+            }
+
+            const response = await post(`/shop/${id}`, null, true)
+            dispatch(updateBoosters(response))
+            ToastAndroid.show('Бустер успешно куплен!', ToastAndroid.SHORT)
+        } catch (e) {
+            create(e.message)
+        }
     }
 
     return (
@@ -69,7 +81,7 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     wrapperInfo: {
-      width: 200
+        width: 200
     },
     icon: {
         width: 25,

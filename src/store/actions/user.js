@@ -8,8 +8,8 @@ export function userInit (data) {
     return { type: USER_INIT, payload: data }
 }
 
-export function updateBoosters (boosters) {
-    return { type: UPDATE_BOOSTERS, boosters }
+export function updateBoosters ({ boosters, coins }) {
+    return { type: UPDATE_BOOSTERS, payload: { boosters, coins } }
 }
 
 export function updateAvatar (id) {

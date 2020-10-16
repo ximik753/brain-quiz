@@ -12,7 +12,7 @@ const initialState = {
 const handlers = {
     [USER_INIT]: (state, { payload }) => ({ ...state, ...payload }),
     [SET_TOKEN]: (state, { token }) => ({ ...state, token }),
-    [UPDATE_BOOSTERS]: (state, { boosters }) => ({ ...state, boosters }),
+    [UPDATE_BOOSTERS]: (state, { payload }) => ({ ...state, boosters: payload.boosters, coins: payload.coins }),
     [UPDATE_AVATAR]: (state, { id }) => ({ ...state, avatar: id }),
     DEFAULT: state => state
 }
