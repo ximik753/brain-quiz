@@ -6,9 +6,11 @@ import { useHttp } from '../hooks/http.hook'
 import { useForm, Controller } from 'react-hook-form'
 import { setUserToken } from '../store/actions/user'
 import { useDispatch } from 'react-redux'
+import { useLogin } from '../hooks/login.hook'
 
 const RegisterScreen = () => {
     const { post, loading } = useHttp()
+    const { registerToken } = useLogin()
     const { control, watch, handleSubmit, formState } = useForm({ mode: 'onChange' })
     const [sex, setSex] = useState(0)
     const dispatch = useDispatch()
@@ -16,6 +18,7 @@ const RegisterScreen = () => {
     const submitHandler = async (value) => {
         try {
             const { token } = await post('/auth/register', { ...value, sex })
+            await registerToken(token)
             dispatch(setUserToken(token))
         } catch (e) {
             //TODO adding error output
