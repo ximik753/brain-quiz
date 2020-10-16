@@ -5,18 +5,23 @@ import { avatars } from '../utils/avatars'
 import { colors } from '../utils/colors'
 import { fonts } from '../utils/fonts'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHttp } from '../hooks/http.hook'
 import { updateAvatar } from '../store/actions/user'
 
 const ModalEditUserAvatar = ({ show, closeHandler }) => {
     const dispatch = useDispatch()
+    const avatar = useSelector(state => state.user.avatar)
     const { post } = useHttp()
 
     const changeAvatarHandler = async (id) => {
         try {
-            await post('/user/editAvatar', { avatar: id }, true)
-            dispatch(updateAvatar(id))
+            if (avatar !== id)
+            {
+                await post('/user/editAvatar', { avatar: id }, true)
+                dispatch(updateAvatar(id))
+            }
+
             closeHandler()
         } catch (e) {
             //TODO adding error output
@@ -48,11 +53,13 @@ const ModalEditUserAvatar = ({ show, closeHandler }) => {
                                 <TouchableNativeFeedback
                                     onPress={() => changeAvatarHandler(key)}
                                 >
-                                    <Image
-                                        source={avatars[key]}
-                                        resizeMode="contain"
-                                        style={styles.avatar}
-                                    />
+                                    <View style={styles.avatarWrapper}>
+                                        <Image
+                                            source={avatars[key]}
+                                            resizeMode="contain"
+                                            style={styles.avatar}
+                                        />
+                                    </View>
                                 </TouchableNativeFeedback>
                             </Fragment>
                         ))
@@ -84,6 +91,13 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         flexDirection: 'row',
         marginTop: 15
+    },
+    avatarWrapper: {
+        padding: 7,
+        borderWidth: 2,
+        borderRadius: 15,
+        borderColor: colors.avatarWrapperBackgroundColor,
+        marginLeft: 10
     },
     avatar: {
         width: 50,

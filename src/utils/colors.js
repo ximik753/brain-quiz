@@ -9,5 +9,6 @@ export const colors = {
     shopIconBackgroundColor: '#4D1C8D',
     leaderboardItemBackgroundColor: '#4D1C8D',
     leaderboardItemIqLabelColor: '#4D1C8D',
-    loaderColor: '#FFC634'
+    loaderColor: '#FFC634',
+    avatarWrapperBackgroundColor: '#404040'
 }
