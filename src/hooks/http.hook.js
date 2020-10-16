@@ -14,11 +14,13 @@ export const useHttp = () => {
             headers.Authorization = `Bearer ${token}`
 
         const data = await fetch(`${baseUrl}${path}`, { headers })
-        const { response } = await data.json()
+        const json = await data.json()
         setLoading(false)
 
-        if (response)
-            return response
+        if (!data.ok)
+            throw new Error(json.error)
+
+        return json.response
     }
 
     const post = async (path, body = null, isAuth) => {
@@ -34,11 +36,13 @@ export const useHttp = () => {
             headers.Authorization = `Bearer ${token}`
 
         const data = await fetch(`${baseUrl}${path}`, { method: 'POST', headers, body })
-        const { response } = await data.json()
+        const json = await data.json()
         setLoading(false)
 
-        if (response)
-            return response
+        if (!data.ok)
+            throw new Error(json.error)
+
+        return json.response
     }
 
     return { get, post, loading }

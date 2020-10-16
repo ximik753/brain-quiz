@@ -7,21 +7,26 @@ import { useForm, Controller } from 'react-hook-form'
 import { setUserToken } from '../store/actions/user'
 import { useDispatch } from 'react-redux'
 import { useLogin } from '../hooks/login.hook'
+import { useAlert } from '../hooks/alert.hook'
+import { Keyboard } from 'react-native'
 
 const RegisterScreen = () => {
     const { post, loading } = useHttp()
     const { registerToken } = useLogin()
+    const { create } = useAlert()
     const { control, watch, handleSubmit, formState } = useForm({ mode: 'onChange' })
     const [sex, setSex] = useState(0)
     const dispatch = useDispatch()
 
     const submitHandler = async (value) => {
+        Keyboard.dismiss()
+
         try {
             const { token } = await post('/auth/register', { ...value, sex })
             await registerToken(token)
             dispatch(setUserToken(token))
         } catch (e) {
-            //TODO adding error output
+            create(e.message)
         }
     }
 
