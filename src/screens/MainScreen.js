@@ -57,12 +57,9 @@ const MainScreen = () => {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        alignItems: 'center',
         backgroundColor: colors.defaultBackgroundColor
     },
     container: {
-        maxWidth: 290,
-        width: '100%',
         alignItems: 'center'
     },
     containerLoading: {
