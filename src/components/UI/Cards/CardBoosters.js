@@ -30,7 +30,7 @@ const CardBoosters = () => {
                     <AppCardBoosterItem
                         label={booster.title}
                         count={count}
-                        icon={`http://192.168.1.69:3000/images/${booster.icon}.png`}
+                        icon={booster.icon}
                     />
                 </Fragment>
             ))
