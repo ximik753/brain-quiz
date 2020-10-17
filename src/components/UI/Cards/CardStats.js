@@ -8,6 +8,7 @@ import { colors } from '../../../utils/colors'
 import { useSelector } from 'react-redux'
 import { avatars } from '../../../utils/avatars'
 import EditUserAvatar from '../../EditUserAvatar'
+import UserActions from '../../UserActions'
 
 const CardStats = () => {
     const { name, stats, avatar } = useSelector(state => state.user)
@@ -21,6 +22,7 @@ const CardStats = () => {
                 resizeMode="contain"
             />
             <EditUserAvatar/>
+            <UserActions/>
             <Text style={styles.name}>{name}</Text>
             <View style={styles.wrapper}>
                 <AppCardStatsItem

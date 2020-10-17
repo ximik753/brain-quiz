@@ -14,6 +14,7 @@ export const useLogin = () => {
 
     const removeToken = useCallback(async () => {
         await AsyncStorage.removeItem(STORAGE_KEY)
+        dispatch(setUserToken(null))
     }, [])
 
     const autoLogin = useCallback(async () => {
