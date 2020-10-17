@@ -12,7 +12,6 @@ export const AppNavigation = () => {
 
     useEffect(() => {
         autoLogin()
-            .catch(error => console.log(error))
     }, [])
 
     let content = (

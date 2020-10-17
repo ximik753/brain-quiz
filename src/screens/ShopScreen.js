@@ -6,12 +6,14 @@ import { colors } from '../utils/colors'
 import { useHttp } from '../hooks/http.hook'
 import { useSelector } from 'react-redux'
 import AppCoinLabel from '../components/UI/AppCoinLabel'
+import { useAlert } from '../hooks/alert.hook'
 
 const ShopScreen = () => {
     const { get } = useHttp()
     const [items, setItems] = useState([])
     const [refreshing, setRefreshing] = useState(false)
     const coins = useSelector(state => state.user.coins)
+    const { create } = useAlert()
 
     const fetchData = useCallback(async () => await get('/shop', true), [get])
     const refreshHandler = useCallback(async () => {
@@ -24,7 +26,7 @@ const ShopScreen = () => {
     useEffect(() => {
         fetchData()
             .then(setItems)
-            .catch(e => console.log(e))
+            .catch(e => create(e.message))
     }, [])
 
     const renderItem = ({ item }) => (

@@ -21,7 +21,6 @@ const LeaderboardScreen = () => {
     useEffect(() => {
         fetchData()
             .then(data => setItems(data))
-            .catch(e => console.log(e))
     }, [])
 
     const renderItem = ({ item, index }) => (

@@ -9,17 +9,19 @@ import AppTimer from '../components/UI/AppTimer'
 import { useDispatch } from 'react-redux'
 import { useHttp } from '../hooks/http.hook'
 import { userInit } from '../store/actions/user'
+import { useAlert } from '../hooks/alert.hook'
 
 const MainScreen = () => {
     const { get, loading } = useHttp()
     const dispatch = useDispatch()
+    const { create } = useAlert()
 
     const fetchData = useCallback(async () => await get('/user', true), [get])
 
     useEffect(() => {
         fetchData()
             .then(data => dispatch(userInit(data)))
-            .catch(e => console.log(e))
+            .catch(e => create(e.message))
     }, [])
 
     let content = (
