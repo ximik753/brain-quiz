@@ -45,7 +45,7 @@ const LoadingScreen = () => {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        backgroundColor: colors.loadingBackgroundColor,
+        backgroundColor: colors.background.loader,
         position: 'relative',
         alignItems: 'center'
     },
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
         bottom: 40,
         fontFamily: fonts.semiBold,
         fontSize: 18,
-        color: colors.defaultFontColor
+        color: colors.font.default
     }
 })
 

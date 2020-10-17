@@ -35,12 +35,12 @@ const styles = StyleSheet.create({
     },
     label: {
         fontFamily: fonts.medium,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         fontSize: 11
     },
     count: {
         fontFamily: fonts.semiBold,
-        color: colors.boosterCountColor,
+        color: colors.font.boosterCount,
         fontSize: 18
     }
 })

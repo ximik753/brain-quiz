@@ -39,7 +39,7 @@ const ShopScreen = () => {
 
     let content = (
         <ActivityIndicator
-            color={colors.loaderColor}
+            color={colors.background.loader}
             size="large"
         />
     )
@@ -77,13 +77,13 @@ const ShopScreen = () => {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        backgroundColor: colors.defaultBackgroundColor
+        backgroundColor: colors.background.default
     },
     wrapperLoading: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.defaultBackgroundColor
+        backgroundColor: colors.background.default
     },
     container: {
         alignItems: 'center',
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: fonts.semiBold,
         fontSize: 30,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         marginTop: 20
     }
 })

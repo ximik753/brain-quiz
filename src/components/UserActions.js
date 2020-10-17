@@ -17,7 +17,7 @@ const UserActions = () => {
             >
                 <MaterialIcons
                     name="more-vert"
-                    color={colors.defaultFontColor}
+                    color={colors.font.default}
                     size={20}
                     style={styles.dropDownIcon}
                 />

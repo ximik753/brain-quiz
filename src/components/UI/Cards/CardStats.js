@@ -33,7 +33,7 @@ const CardStats = () => {
                 <AppCardStatsItem
                     label="Побед"
                     value={gameWinner}
-                    icon={<MaterialIcons name="emoji-events" color={colors.defaultFontColor} size={19}/>}
+                    icon={<MaterialIcons name="emoji-events" color={colors.font.default} size={19}/>}
                 />
                 <AppCardStatsItem
                     label="IQ"
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     name: {
         fontFamily: fonts.semiBold,
         fontSize: 18,
-        color: colors.defaultFontColor
+        color: colors.font.default
     },
     wrapper: {
         marginTop: 7,

@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: colors.defaultBackgroundColor,
+        backgroundColor: colors.background.default,
         position: 'relative'
     },
     container: {
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: fonts.bold,
-        color: '#FFF',
+        color: colors.font.default,
         fontSize: 21,
         textAlign: 'center',
         marginTop: 16

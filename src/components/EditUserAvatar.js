@@ -16,7 +16,7 @@ const EditUserAvatar = () => {
             >
                 <MaterialIcons
                     name="settings"
-                    color={colors.defaultFontColor}
+                    color={colors.font.default}
                     size={19}
                 />
             </TouchableNativeFeedback>

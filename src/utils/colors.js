@@ -1,14 +1,21 @@
 export const colors = {
-    defaultFontColor: '#FFF',
-    defaultBackgroundColor: '#421B75',
-    loadingBackgroundColor: '#2C1747',
-    menuTabColor: '#2E1351',
-    yellowBorderColor: '#FFC634',
-    cardBackgroundColor: '#34155B',
-    boosterCountColor: '#FFC634',
-    shopIconBackgroundColor: '#4D1C8D',
-    leaderboardItemBackgroundColor: '#4D1C8D',
-    leaderboardItemIqLabelColor: '#4D1C8D',
-    loaderColor: '#FFC634',
-    avatarWrapperBackgroundColor: '#404040'
+    font: {
+        default: '#FFF',
+        black: '#000',
+        boosterCount: '#FFC634'
+    },
+    background: {
+        default: '#421B75',
+        loading: '#2C1747',
+        menu: '#2E1351',
+        card: '#34155B',
+        shopIcon: '#4D1C8D',
+        leaderboardItem: '#4D1C8D',
+        loader: '#FFC634',
+        avatarWrapper: '#404040',
+        dropdown: '#FFF'
+    },
+    border: {
+        yellow: '#FFC634'
+    }
 }

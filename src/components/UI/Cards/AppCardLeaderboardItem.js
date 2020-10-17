@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 15,
-        backgroundColor: colors.cardBackgroundColor,
+        backgroundColor: colors.background.card,
         paddingVertical: 5,
         paddingHorizontal: 20,
         borderRadius: 60,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     position: {
         fontFamily: fonts.bold,
         fontSize: 16,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         marginRight: 13
     },
     icon: {
@@ -45,23 +45,13 @@ const styles = StyleSheet.create({
     name: {
         fontFamily: fonts.bold,
         fontSize: 14,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         marginRight: 45
-    },
-    iqWrapper: {
-        backgroundColor: colors.leaderboardItemIqLabelColor,
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingTop: 5,
-        paddingBottom: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 25
     },
     iq: {
         fontFamily: fonts.bold,
         fontSize: 14,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         position: 'absolute',
         top: '30%',
         right: '15%'

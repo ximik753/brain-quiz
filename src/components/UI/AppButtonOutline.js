@@ -27,14 +27,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 50,
         borderWidth: 1,
-        borderColor: colors.defaultFontColor,
+        borderColor: colors.font.default,
         height: 27,
         width: 120
     },
     text: {
         fontFamily: fonts.semiBold,
         fontSize: 14,
-        color: colors.defaultFontColor
+        color: colors.font.default
     }
 })
 

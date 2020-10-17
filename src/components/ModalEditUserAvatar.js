@@ -8,11 +8,13 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHttp } from '../hooks/http.hook'
 import { updateAvatar } from '../store/actions/user'
+import { useAlert } from '../hooks/alert.hook'
 
 const ModalEditUserAvatar = ({ show, closeHandler }) => {
     const dispatch = useDispatch()
     const avatar = useSelector(state => state.user.avatar)
     const { post } = useHttp()
+    const {create } = useAlert()
 
     const changeAvatarHandler = async (id) => {
         try {
@@ -24,7 +26,7 @@ const ModalEditUserAvatar = ({ show, closeHandler }) => {
 
             closeHandler()
         } catch (e) {
-            //TODO adding error output
+            create(e.message)
         }
     }
 
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
         height: 150,
         padding: 10,
         alignItems: 'center',
-        backgroundColor: colors.defaultFontColor
+        backgroundColor: colors.font.default
     },
     headerWrapper: {
         justifyContent: 'space-between',
@@ -96,7 +98,7 @@ const styles = StyleSheet.create({
         padding: 7,
         borderWidth: 2,
         borderRadius: 15,
-        borderColor: colors.avatarWrapperBackgroundColor,
+        borderColor: colors.background.avatarWrapper,
         marginLeft: 10
     },
     avatar: {

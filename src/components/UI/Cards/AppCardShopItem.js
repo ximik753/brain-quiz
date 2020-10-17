@@ -68,13 +68,13 @@ const styles = StyleSheet.create({
         width: 290,
         paddingVertical: 20,
         paddingHorizontal: 20,
-        backgroundColor: colors.cardBackgroundColor,
+        backgroundColor: colors.background.card,
         borderRadius: 20
     },
     wrapperIcon: {
         width: 36,
         height: 36,
-        backgroundColor: colors.shopIconBackgroundColor,
+        backgroundColor: colors.background.shopIcon,
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 15,
@@ -90,12 +90,12 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: fonts.bold,
         fontSize: 14,
-        color: colors.defaultFontColor
+        color: colors.font.default
     },
     description: {
         fontFamily: fonts.medium,
         fontSize: 12,
-        color: colors.defaultFontColor
+        color: colors.font.default
     },
     buyWrapper: {
         justifyContent: 'space-between',
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     price: {
         fontFamily: fonts.bold,
         fontSize: 16,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         marginRight: 5,
         marginLeft: 10
     }

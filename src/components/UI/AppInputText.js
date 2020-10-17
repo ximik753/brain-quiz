@@ -27,17 +27,16 @@ const styles = StyleSheet.create({
     label: {
         fontFamily: fonts.medium,
         fontSize: 14,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         marginBottom: 10
     },
     input: {
         borderWidth: 2,
-        borderColor: colors.yellowBorderColor,
+        borderColor: colors.border.yellow,
         borderRadius: 48,
         height: 38,
-        paddingLeft: 15,
-        paddingRight: 15,
-        color: colors.defaultFontColor
+        paddingHorizontal: 15,
+        color: colors.font.default
     }
 })
 

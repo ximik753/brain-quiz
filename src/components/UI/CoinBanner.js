@@ -33,9 +33,9 @@ const styles = StyleSheet.create({
         position: 'absolute',
         fontFamily: fonts.bold,
         fontSize: 24,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         top: '20%',
-        left: '8.5%'
+        left: 23
     }
 })
 

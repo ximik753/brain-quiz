@@ -35,7 +35,7 @@ const MainScreen = () => {
     if (loading) {
         content = (
             <ActivityIndicator
-                color={colors.loaderColor}
+                color={colors.background.loader}
                 size="large"
             />
         )
@@ -57,7 +57,7 @@ const MainScreen = () => {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        backgroundColor: colors.defaultBackgroundColor
+        backgroundColor: colors.background.default
     },
     container: {
         alignItems: 'center'

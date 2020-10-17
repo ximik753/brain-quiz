@@ -37,13 +37,13 @@ const styles = StyleSheet.create({
     },
     coins: {
         fontFamily: fonts.bold,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         fontSize: 14,
         marginRight: 5
     },
     title: {
         fontFamily: fonts.medium,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         fontSize: 14
     }
 })

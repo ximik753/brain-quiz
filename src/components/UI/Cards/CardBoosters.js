@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: fonts.semiBold,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         fontSize: 18
     },
     wrapper: {
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     boostersNotFound: {
         fontFamily: fonts.medium,
         fontSize: 16,
-        color: colors.defaultFontColor
+        color: colors.font.default
     },
     boostersNotFoundButton: {
         height: 30,

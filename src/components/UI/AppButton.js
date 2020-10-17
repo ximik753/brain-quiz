@@ -13,7 +13,7 @@ const AppButton = ({ text, pressHandler, disabled, loading, styleButton }) => {
             onPress={pressHandler}
             uppercase={false}
             labelStyle={styles.text}
-            color={colors.yellowBorderColor}
+            color={colors.border.yellow}
             mode="contained"
         >
             {text}
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     text: {
-        color: '#000',
+        color: colors.font.black,
         fontSize: 18,
         fontFamily: fonts.bold
     }
