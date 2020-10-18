@@ -16,7 +16,7 @@ const CardBoosters = () => {
         <View>
             <Text style={styles.boostersNotFound}>Бустеры отсутствуют</Text>
             <AppButton
-                text="Преобрести"
+                text="Приобрести"
                 styleButton={styles.boostersNotFoundButton}
                 pressHandler={() => linkTo('/Shop')}
             />

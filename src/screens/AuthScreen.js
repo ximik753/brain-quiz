@@ -14,7 +14,7 @@ const AuthScreen = () => {
             <AppParticles/>
             <View style={styles.container}>
                 <Image source={require('../assets/images/authorization/logo.png')}/>
-                <Text style={styles.title}>Онлайн виктрина для прокачки своих знаний</Text>
+                <Text style={styles.title}>Онлайн викторина для прокачки своих знаний</Text>
                 <AppButton
                     text="Создать аккаунт"
                     styleButton={styles.buttonRegister}
