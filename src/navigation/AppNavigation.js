@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { TabsMainNavigation } from './TabsMainNavigation'
 import { useLogin } from '../hooks/login.hook'
 import { StackLoadingNavigator } from './StackLoadingNavigator'
+import { StackQuizNavigator } from './StackQuizNavigator'
 
 export const AppNavigation = () => {
     const token = useSelector(state => state.user.token)
@@ -28,7 +29,7 @@ export const AppNavigation = () => {
 
     return (
         <NavigationContainer>
-            {content}
+            <StackQuizNavigator/>
         </NavigationContainer>
     )
 }
