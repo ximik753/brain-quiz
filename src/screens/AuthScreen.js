@@ -14,7 +14,7 @@ const AuthScreen = () => {
             <AppParticles/>
             <View style={styles.container}>
                 <Image source={require('../assets/images/authorization/logo.png')}/>
-                <Text style={styles.title}>Онлайн виктрина для прокачки своих знаний</Text>
+                <Text style={styles.title}>Онлайн викторина для прокачки своих знаний</Text>
                 <AppButton
                     text="Создать аккаунт"
                     styleButton={styles.buttonRegister}
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: colors.defaultBackgroundColor,
+        backgroundColor: colors.background.default,
         position: 'relative'
     },
     container: {
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: fonts.bold,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         fontSize: 21,
         textAlign: 'center',
         marginTop: 15
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     },
     loginLabel: {
         fontFamily: fonts.medium,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         fontSize: 14,
         marginBottom: 10
     }

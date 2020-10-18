@@ -3,12 +3,18 @@ import { View, StyleSheet, TextInput, Text } from 'react-native'
 import { fonts } from '../../utils/fonts'
 import { colors } from '../../utils/colors'
 
-const AppInputText = ({ label }) => {
+const AppInputText = ({ label, autoFocus, keyboardType, changeHandler, placeholder, secureTextEntry, maxLength }) => {
     return (
         <View style={styles.wrapper}>
             <Text style={styles.label}>{label}</Text>
             <TextInput
                 style={styles.input}
+                autoFocus={autoFocus}
+                keyboardType={keyboardType || 'default'}
+                secureTextEntry={secureTextEntry || false}
+                onChangeText={changeHandler}
+                placeholder={placeholder || ''}
+                maxLength={maxLength || 32}
             />
         </View>
     )
@@ -21,17 +27,16 @@ const styles = StyleSheet.create({
     label: {
         fontFamily: fonts.medium,
         fontSize: 14,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         marginBottom: 10
     },
     input: {
         borderWidth: 2,
-        borderColor: colors.yellowBorderColor,
+        borderColor: colors.border.yellow,
         borderRadius: 48,
         height: 38,
-        color: colors.defaultBackgroundColor,
-        paddingLeft: 15,
-        paddingRight: 15
+        paddingHorizontal: 15,
+        color: colors.font.default
     }
 })
 

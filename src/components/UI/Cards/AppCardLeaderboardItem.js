@@ -2,19 +2,18 @@ import React from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native'
 import { fonts } from '../../../utils/fonts'
 import { colors } from '../../../utils/colors'
+import { avatars } from '../../../utils/avatars'
 
-const AppCardLeaderboardItem = () => {
+const AppCardLeaderboardItem = ({ avatar, name, iq, position }) => {
     return (
         <View style={styles.wrapper}>
-            <Text style={styles.position}>1</Text>
+            <Text style={styles.position}>{position}</Text>
             <Image
                 style={styles.icon}
-                source={{ uri: 'https://avatars3.githubusercontent.com/u/34097384?s=460&u=3b74d5a77b93a2f4ce535f68ec659f5e92772bc0&v=4' }}
+                source={avatars[avatar] || avatar[0]}
             />
-            <Text style={styles.name}>Dev</Text>
-            <View style={styles.iqWrapper}>
-                <Text style={styles.iq}>999</Text>
-            </View>
+            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.iq}>{iq}</Text>
         </View>
     )
 }
@@ -24,17 +23,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 15,
-        backgroundColor: colors.leaderboardItemBackgroundColor,
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingTop: 5,
-        paddingBottom: 5,
-        borderRadius: 60
+        backgroundColor: colors.background.card,
+        paddingVertical: 5,
+        paddingHorizontal: 20,
+        borderRadius: 60,
+        width: 250,
+        position: 'relative'
     },
     position: {
         fontFamily: fonts.bold,
-        fontSize: 18,
-        color: colors.defaultFontColor,
+        fontSize: 16,
+        color: colors.font.default,
         marginRight: 13
     },
     icon: {
@@ -46,23 +45,16 @@ const styles = StyleSheet.create({
     name: {
         fontFamily: fonts.bold,
         fontSize: 14,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         marginRight: 45
-    },
-    iqWrapper: {
-        backgroundColor: colors.leaderboardItemIqLabelColor,
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingTop: 5,
-        paddingBottom: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 25
     },
     iq: {
         fontFamily: fonts.bold,
         fontSize: 14,
-        color: colors.defaultFontColor
+        color: colors.font.default,
+        position: 'absolute',
+        top: '30%',
+        right: '15%'
     }
 })
 

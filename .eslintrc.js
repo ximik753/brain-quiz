@@ -6,6 +6,7 @@ module.exports = {
     'indent': 'off',
     'semi': ['error', 'never'],
     'comma-dangle': ['error', 'never'],
-    'curly': 'off'
+    'curly': 'off',
+    'no-console': 'error'
   }
 }

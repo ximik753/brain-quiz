@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Image } from 'react-native'
+import { StyleSheet, Image, Dimensions } from 'react-native'
 import Carousel from 'react-native-snap-carousel'
 
 const AppCarousel = () => {
@@ -15,7 +15,7 @@ const AppCarousel = () => {
         <Carousel
             layout="default"
             data={items}
-            sliderWidth={290}
+            sliderWidth={Dimensions.get('window').width}
             itemWidth={230}
             firstItem={1}
             renderItem={renderItems}

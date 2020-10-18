@@ -43,6 +43,6 @@ export const TabsMainNavigation = () => (
 
 const styles = StyleSheet.create({
     barStyle: {
-        backgroundColor: colors.menuTabColor
+        backgroundColor: colors.background.menu
     }
 })

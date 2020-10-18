@@ -1,59 +1,77 @@
 import React from 'react'
-import { View, StyleSheet, Text, Image } from 'react-native'
+import { Keyboard, StyleSheet } from 'react-native'
 import AppInputText from '../components/UI/AppInputText'
-import AppButton from '../components/UI/AppButton'
-import { colors } from '../utils/colors'
-import { fonts } from '../utils/fonts'
-import AppParticles from '../components/UI/AppParticles'
+import AuthContainer from '../components/AuthContainer'
+import { useHttp } from '../hooks/http.hook'
+import { Controller, useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { setUserToken } from '../store/actions/user'
+import { useLogin } from '../hooks/login.hook'
+import { useAlert } from '../hooks/alert.hook'
 
 const LoginScreen = () => {
+    const { post, loading } = useHttp()
+    const { registerToken } = useLogin()
+    const { create } = useAlert()
+    const { control, handleSubmit, formState } = useForm({ mode: 'onChange' })
+    const dispatch = useDispatch()
+
+    const submitHandler = async (value) => {
+        Keyboard.dismiss()
+
+        try {
+            const { token } = await post('/auth/login', value)
+            await registerToken(token)
+            dispatch(setUserToken(token))
+        } catch (e) {
+            create(e.message)
+        }
+    }
+
     return (
-        <View style={styles.wrapper}>
-            <AppParticles/>
-            <View style={styles.container}>
-                <Image source={require('../assets/images/authorization/logo.png')}/>
-                <Text style={styles.title}>Онлайн виктрина для прокачки своих знаний</Text>
-                <View style={styles.inputsWrapper}>
-                    <AppInputText label="Логин"/>
-                    <AppInputText label="Пароль"/>
-                </View>
-                <AppButton text="Войти" styleButton={styles.button}/>
-            </View>
-        </View>
+        <AuthContainer
+            textButton="Войти"
+            styleInputsWrapper={styles.inputsWrapper}
+            verticalOffset={-140}
+            pressHandler={handleSubmit(submitHandler)}
+            isValid={formState.isValid}
+            loading={loading}
+        >
+            <Controller
+                control={control}
+                name="name"
+                render={({ onChange }) => (
+                    <AppInputText
+                        label="Логин"
+                        maxLength={7}
+                        changeHandler={onChange}
+                    />
+                )}
+                defaultValue=""
+                rules={{ required: true, minLength: 3 }}
+            />
+            <Controller
+                control={control}
+                name="password"
+                render={({ onChange }) => (
+                    <AppInputText
+                        label="Пароль"
+                        secureTextEntry={true}
+                        maxLength={32}
+                        changeHandler={onChange}
+                    />
+                )}
+                defaultValue=""
+                rules={{ required: true, minLength: 6 }}
+            />
+        </AuthContainer>
     )
 }
 
 const styles = StyleSheet.create({
-    wrapper: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: colors.defaultBackgroundColor,
-        position: 'relative'
-    },
-    container: {
-        maxWidth: 290,
-        width: '100%',
-        height: '100%',
-        alignItems: 'center',
-        paddingTop: 45
-    },
-    title: {
-        fontFamily: fonts.bold,
-        color: '#FFF',
-        fontSize: 21,
-        textAlign: 'center',
-        marginTop: 16
-    },
     inputsWrapper: {
         marginTop: 50,
-        height: 190,
-        justifyContent: 'space-between'
-    },
-    button: {
-        alignItems: 'center',
-        position: 'absolute',
-        bottom: 35,
-        left: 0
+        height: 190
     }
 })
 

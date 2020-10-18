@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         fontFamily: fonts.semiBold,
         fontSize: 18,
-        color: colors.defaultFontColor
+        color: colors.font.default
     },
     timerWrapper: {
         position: 'relative'
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     timer: {
         fontFamily: fonts.black,
         fontSize: 24,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         zIndex: 2
     },
     particle: {

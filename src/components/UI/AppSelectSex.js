@@ -18,10 +18,10 @@ const AppSelectSex = ({ changeHandler }) => {
                 initial={0}
                 formHorizontal={true}
                 animation={true}
-                buttonColor={colors.yellowBorderColor}
-                labelColor={colors.defaultFontColor}
-                selectedButtonColor={colors.yellowBorderColor}
-                selectedLabelColor={colors.defaultFontColor}
+                buttonColor={colors.border.yellow}
+                labelColor={colors.font.default}
+                selectedButtonColor={colors.border.yellow}
+                selectedLabelColor={colors.font.default}
                 buttonSize={14}
                 style={styles.inputsWrapper}
                 onPress={changeHandler}
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: fonts.medium,
         fontSize: 14,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         marginBottom: 10
     },
     inputsWrapper: {

@@ -1,34 +1,40 @@
 import React from 'react'
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { fonts } from '../../utils/fonts'
 import { colors } from '../../utils/colors'
+import { Button } from 'react-native-paper'
 
-const AppButtonOutline = ({ text }) => {
+const AppButtonOutline = ({ text, pressHandler, loading, disabled }) => {
     return (
-        <TouchableOpacity activeOpacity={0.8} style={styles.wrapper}>
-            <View style={styles.button}>
-                <Text style={styles.text}>{text}</Text>
-            </View>
-        </TouchableOpacity>
+        <Button
+            style={styles.button}
+            onPress={pressHandler}
+            uppercase={false}
+            labelStyle={styles.text}
+            loading={loading || false}
+            disabled={(disabled || loading) || false}
+            color="transparent"
+            mode="contained"
+        >
+            {text}
+        </Button>
     )
 }
 
 const styles = StyleSheet.create({
     button: {
-        paddingTop: 5,
-        paddingBottom: 5,
-        paddingLeft: 26,
-        paddingRight: 26,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 50,
         borderWidth: 1,
-        borderColor: colors.defaultFontColor
+        borderColor: colors.font.default,
+        height: 27,
+        width: 120
     },
     text: {
         fontFamily: fonts.semiBold,
         fontSize: 14,
-        color: colors.defaultFontColor
+        color: colors.font.default
     }
 })
 

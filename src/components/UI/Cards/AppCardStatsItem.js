@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontFamily: fonts.bold,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         fontSize: 10,
         marginBottom: 3
     },
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     },
     value: {
         fontFamily: fonts.semiBold,
-        color: colors.defaultFontColor,
+        color: colors.font.default,
         fontSize: 14,
         marginLeft: 15
     }

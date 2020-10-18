@@ -1,29 +1,34 @@
 import React from 'react'
-import { StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { fonts } from '../../utils/fonts'
+import { Button } from 'react-native-paper'
+import { colors } from '../../utils/colors'
 
-const AppButton = ({ text, styleButton, styleText, pressHandler }) => {
+const AppButton = ({ text, pressHandler, disabled, loading, styleButton }) => {
     return (
-        <TouchableOpacity
-            activeOpacity={0.8}
+        <Button
             style={{ ...styles.button, ...styleButton }}
+            disabled={(disabled || loading) || false}
+            loading={loading || false}
             onPress={pressHandler}
+            uppercase={false}
+            labelStyle={styles.text}
+            color={colors.border.yellow}
+            mode="contained"
         >
-            <Text style={{ ...styles.text, ...styleText }}>{text}</Text>
-        </TouchableOpacity>
+            {text}
+        </Button>
     )
 }
 
 const styles = StyleSheet.create({
     button: {
         width: 290,
-        backgroundColor: '#F1CF13',
-        padding: 11,
         alignItems: 'center',
         justifyContent: 'center'
     },
     text: {
-        color: '#000',
+        color: colors.font.black,
         fontSize: 18,
         fontFamily: fonts.bold
     }
