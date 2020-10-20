@@ -2,13 +2,21 @@ import React from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native'
 import { fonts } from '../../utils/fonts'
 import { colors } from '../../utils/colors'
+import { useSelector } from 'react-redux'
 
 const AppTimer = () => {
+    const nextGameDate = useSelector(state => state.user.nextGameDate)
+    const time = new Date(nextGameDate * 1000)
+    const hours = time.getHours()
+    const minutes = time.getMinutes()
+
+    const transformTime = () => `${hours < 9 ? `${hours}0` : hours}:${minutes < 9 ? `${minutes}0` : minutes}`
+
     return (
         <View style={styles.wrapper}>
             <Text style={styles.title}>Следущая игра в:</Text>
             <View style={styles.timerWrapper}>
-                <Text style={styles.timer}>20:00</Text>
+                <Text style={styles.timer}>{transformTime()}</Text>
                 <Image
                     style={styles.particle}
                     source={require('../../assets/images/main/particle.png')}
