@@ -32,7 +32,6 @@ const LoginScreen = () => {
         <AuthContainer
             textButton="Войти"
             styleInputsWrapper={styles.inputsWrapper}
-            verticalOffset={-140}
             pressHandler={handleSubmit(submitHandler)}
             isValid={formState.isValid}
             loading={loading}
@@ -71,6 +70,7 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
     inputsWrapper: {
         marginTop: 50,
+        marginBottom: 80,
         height: 190
     }
 })
