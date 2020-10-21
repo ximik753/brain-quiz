@@ -10,7 +10,7 @@ const AppTimer = () => {
     const hours = time.getHours()
     const minutes = time.getMinutes()
 
-    const transformTime = () => `${hours < 9 ? `${hours}0` : hours}:${minutes < 9 ? `${minutes}0` : minutes}`
+    const transformTime = () => `${hours <= 9 ? `0${hours}` : hours}:${minutes <= 9 ? `0${minutes}` : minutes}`
 
     return (
         <View style={styles.wrapper}>
