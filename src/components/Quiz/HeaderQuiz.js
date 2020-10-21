@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import { fonts } from '../../utils/fonts'
 import { colors } from '../../utils/colors'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import QuizTimer from './QuizTimer'
+import { useSelector } from 'react-redux'
+import { QuizContext } from '../../context/quiz/quizContext'
+import { packets } from '../../utils/quiz/packets'
+import { actions } from '../../utils/quiz/actions'
+import { build } from '../../utils/quiz/packetUtils'
 
 const HeaderQuiz = () => {
+    const online = useSelector(state => state.game.online)
+    const { ws } = useContext(QuizContext)
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            ws.send(build(packets.client.ClientCommands, { id: actions.online }))
+        }, 5000)
+
+        return () => clearInterval(id)
+    }, [])
+
     return (
         <View style={styles.wrapper}>
             <View style={styles.onlineWrapper}>
@@ -14,7 +30,7 @@ const HeaderQuiz = () => {
                     color={colors.font.default}
                     size={20}
                 />
-                <Text style={styles.onlineCount}>100</Text>
+                <Text style={styles.onlineCount}>{online}</Text>
             </View>
             <QuizTimer/>
         </View>
