@@ -10,7 +10,7 @@ const initialState = {
 const handlers = {
     [GAME_INIT]: (state, { payload }) => ({ ...state, ...payload }),
     [GAME_ONLINE]: (state, { online }) => ({ ...state, online }),
-    [ADD_CHAT_MESSAGE]: (state, message) => ({ ...state, chat: { ...state.chat, message } }),
+    [ADD_CHAT_MESSAGE]: (state, { message }) => ({ ...state, chat: [ ...state.chat, message ] }),
     DEFAULT: state => state
 }
 

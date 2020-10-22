@@ -1,25 +1,58 @@
-import React from 'react'
-import { View, StyleSheet, TouchableWithoutFeedback, TextInput } from 'react-native'
+import React, { useContext, useRef, useState } from 'react'
+import { StyleSheet, FlatList, View, TextInput, TouchableWithoutFeedback } from 'react-native'
+import { useSelector } from 'react-redux'
+import { id } from '../../utils/idGenerator'
 import QuizChatItem from './QuizChatItem'
 import { colors } from '../../utils/colors'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { QuizContext } from '../../context/quiz/quizContext'
+import { build } from '../../utils/quiz/packetUtils'
+import { packets } from '../../utils/quiz/packets'
+import { actions } from '../../utils/quiz/actions'
 
 const QuizChat = () => {
+    const flatList = useRef(null)
+    const chat = useSelector(state => state.game.chat)
+    const [message, setMessage] = useState('')
+    const { ws } = useContext(QuizContext)
+
+    const sendMessageHandler = () => {
+        ws.send(build(packets.client.ClientCommands, { id: actions.chatMessage, data: { message } }))
+        setMessage('')
+    }
+
+    const renderItem = ({ item }) => (
+        <QuizChatItem
+            name={item.name}
+            avatar={item.avatar}
+            message={item.message}
+        />
+    )
+
     return (
         <View>
-            <QuizChatItem/>
-            <QuizChatItem/>
-            <QuizChatItem/>
-            <QuizChatItem/>
-            <QuizChatItem/>
-            <View style={styles.messageWrapper}>
+            <FlatList
+                data={chat}
+                renderItem={renderItem}
+                keyExtractor={() => id()}
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                onContentSizeChange={() => flatList.current.scrollToEnd()}
+                style={styles.container}
+                ref={flatList}
+            />
+            <View style={styles.inputWrapper}>
                 <TextInput
                     style={styles.input}
                     placeholder="Текст сообщения..."
                     placeholderTextColor={colors.font.default}
                     maxLength={50}
+                    value={message}
+                    onChangeText={setMessage}
                 />
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback
+                    onPress={sendMessageHandler}
+                >
                     <MaterialIcons
                         name="send"
                         color={colors.background.messageSendBtn}
@@ -32,14 +65,18 @@ const QuizChat = () => {
 }
 
 const styles = StyleSheet.create({
-    messageWrapper: {
+    container: {
+        maxHeight: 190
+    },
+    inputWrapper: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginTop: 20
+        marginTop: 20,
+        width: '95%'
     },
     input: {
-        width: 255,
+        width: 240,
         borderWidth: 2,
         borderColor: colors.border.yellow,
         borderRadius: 48,

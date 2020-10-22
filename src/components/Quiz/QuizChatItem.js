@@ -4,16 +4,16 @@ import { avatars } from '../../utils/avatars'
 import { fonts } from '../../utils/fonts'
 import { colors } from '../../utils/colors'
 
-const QuizChatItem = () => {
+const QuizChatItem = ({ name, message, avatar }) => {
     return (
         <View style={styles.wrapper}>
             <Image
                 style={styles.avatar}
-                source={avatars[0]}
+                source={avatars[avatar] || avatars[0]}
                 resizeMode="contain"
             />
-            <Text style={styles.name}>Ximik</Text>
-            <Text style={styles.message}>Lorem ipsum dolor</Text>
+            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.message}>{message}</Text>
         </View>
     )
 }

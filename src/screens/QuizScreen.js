@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { colors } from '../utils/colors'
 import HeaderQuiz from '../components/Quiz/HeaderQuiz'
 import QuestionsQuiz from '../components/Quiz/QuestionsQuiz'
@@ -41,10 +41,8 @@ const QuizScreen = () => {
 
     return (
         <View style={styles.wrapper}>
-            <ScrollView
-                showsHorizontalScrollIndicator={false}
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={status === 1 ? styles.container : styles.containerFullScreen}
+            <View
+                style={status === 1 ? styles.container : styles.containerFullScreen}
             >
                 <HeaderQuiz/>
                 {
@@ -53,7 +51,7 @@ const QuizScreen = () => {
                     : <QuestionsQuiz/>
                 }
                 <QuizChat/>
-            </ScrollView>
+            </View>
         </View>
     )
 }
