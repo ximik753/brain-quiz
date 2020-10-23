@@ -6,6 +6,8 @@ export const packets = {
     server: {
         HomeData: 20102,
         Online: 20200,
-        ChatMessage: 20300
+        ChatMessage: 20300,
+        NewQuestion: 20400,
+        RightAnswer: 20401
     }
 }

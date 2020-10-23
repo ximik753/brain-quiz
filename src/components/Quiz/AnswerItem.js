@@ -1,15 +1,36 @@
-import React from 'react'
-import { View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native'
+import React, { useContext, useState } from 'react'
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { colors } from '../../utils/colors'
 import { fonts } from '../../utils/fonts'
+import { QuizContext } from '../../context/quiz/quizContext'
+import { build } from '../../utils/quiz/packetUtils'
+import { packets } from '../../utils/quiz/packets'
+import { actions } from '../../utils/quiz/actions'
+import { useDispatch } from 'react-redux'
+import { selectAnswer } from '../../store/actions/game'
 
-const AnswerItem = ({ children, isActive }) => {
+const AnswerItem = ({ children, btnStyle, id, disable }) => {
+    const { ws } = useContext(QuizContext)
+    const [style, setStyle] = useState('')
+    const dispatch = useDispatch()
+
+    const pressHandler = () => {
+        setStyle('selected')
+        dispatch(selectAnswer(id))
+        ws.send(build(packets.client.ClientCommands, { id: actions.sendAnswer, data: { id } }))
+    }
+
+    const noop = () => {}
+
     return (
-        <TouchableWithoutFeedback>
-            <View style={isActive ? styles.answerActive : styles.answer}>
+        <TouchableOpacity
+            onPress={disable ? noop : pressHandler}
+            activeOpacity={1.0}
+        >
+            <View style={{ ...styles.answer, ...styles[btnStyle || style || ''] }}>
                 <Text style={styles.answerText}>{children}</Text>
             </View>
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
     )
 }
 
@@ -23,14 +44,14 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         marginBottom: 15
     },
-    answerActive: {
-        backgroundColor: colors.background.quizAnswerItem,
-        borderRadius: 50,
-        marginBottom: 15,
-        width: 290,
-        height: 40,
-        paddingHorizontal: 15,
-        justifyContent: 'center'
+    selected: {
+        backgroundColor: colors.background.selectedAnswer
+    },
+    right: {
+        backgroundColor: colors.background.rightAnswer
+    },
+    wrong: {
+        backgroundColor: colors.background.wrongAnswer
     },
     answerText: {
         fontFamily: fonts.semiBold,

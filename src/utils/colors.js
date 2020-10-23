@@ -15,8 +15,10 @@ export const colors = {
         loader: '#FFC634',
         avatarWrapper: '#404040',
         dropdown: '#FFF',
-        quizAnswerItem: '#e0b339',
-        messageSendBtn: '#EFEFEF'
+        messageSendBtn: '#EFEFEF',
+        selectedAnswer: '#c69f33',
+        rightAnswer: '#098006',
+        wrongAnswer: '#bf1414'
     },
     border: {
         yellow: '#FFC634',
