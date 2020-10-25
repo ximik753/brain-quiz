@@ -1,4 +1,4 @@
-export const packets = {
+export const packets = Object.freeze({
     client: {
         Login: 10100,
         ClientCommands: 10200
@@ -10,4 +10,4 @@ export const packets = {
         NewQuestion: 20400,
         RightAnswer: 20401
     }
-}
+})

@@ -1,4 +1,4 @@
-export const colors = {
+export const colors = Object.freeze({
     font: {
         default: '#FFF',
         black: '#000',
@@ -25,4 +25,4 @@ export const colors = {
         timer: '#BABABA',
         progress: '#FFF'
     }
-}
+})
