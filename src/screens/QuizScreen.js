@@ -9,7 +9,8 @@ import { packets } from '../utils/quiz/packets'
 import { build, parse } from '../utils/quiz/packetUtils'
 import QuizWaitPlayers from '../components/Quiz/QuizWaitPalyers'
 import { useSelector } from 'react-redux'
-import { usePackets } from '../hooks/usePackets'
+import { usePackets } from '../hooks/packets.hook'
+import QuizEnding from '../components/Quiz/QuizEnding'
 
 const QuizScreen = () => {
     const { ws } = useContext(QuizContext)
