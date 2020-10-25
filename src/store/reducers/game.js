@@ -1,14 +1,22 @@
-import { ADD_CHAT_MESSAGE, GAME_INIT, GAME_ONLINE, SELECTED_ANSWER, SET_ANSWER, SET_NEW_QUESTION } from '../types'
+import {
+    ADD_CHAT_MESSAGE,
+    GAME_INIT,
+    GAME_ONLINE,
+    SELECTED_ANSWER,
+    SET_ANSWER,
+    SET_NEW_QUESTION,
+    UPDATE_STATUS
+} from '../types'
 
 const initialState = {
-    status: 2,
-    startTime: 300,
+    status: 0,
+    startTime: 0,
     online: 0,
     chat: [],
     question: null,
     answer: {},
     selectedAnswer: 0,
-    totalQuestion: 0
+    totalQuestions: 12
 }
 
 const handlers = {
@@ -18,6 +26,7 @@ const handlers = {
     [SET_NEW_QUESTION]: (state, { question }) => ({ ...state, question }),
     [SET_ANSWER]: (state, { answer }) => ({ ...state, answer }),
     [SELECTED_ANSWER]: (state, { id }) => ({ ...state, selectedAnswer: id }),
+    [UPDATE_STATUS]: (state, { payload }) => ({ ...state, status: payload.id, ...payload.state }),
     DEFAULT: state => state
 }
 

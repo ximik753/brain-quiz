@@ -9,6 +9,7 @@ import { StackQuizNavigator } from './StackQuizNavigator'
 
 export const AppNavigation = () => {
     const token = useSelector(state => state.user.token)
+    const status = useSelector(state => state.game.status)
     const { autoLogin, ready } = useLogin()
 
     useEffect(() => {
@@ -27,9 +28,13 @@ export const AppNavigation = () => {
         )
     }
 
+    if (status > 0) {
+        content = <StackQuizNavigator/>
+    }
+
     return (
         <NavigationContainer>
-            <StackQuizNavigator/>
+            {content}
         </NavigationContainer>
     )
 }

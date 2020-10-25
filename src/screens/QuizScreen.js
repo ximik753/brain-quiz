@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { colors } from '../utils/colors'
-import HeaderQuiz from '../components/Quiz/HeaderQuiz'
-import QuestionsQuiz from '../components/Quiz/QuestionsQuiz'
+import QuizHeader from '../components/Quiz/QuizHeader'
+import QuizQuestion from '../components/Quiz/QuizQuestion'
 import QuizChat from '../components/Quiz/QuizChat'
 import { QuizContext } from '../context/quiz/quizContext'
 import { packets } from '../utils/quiz/packets'
@@ -18,7 +18,7 @@ const QuizScreen = () => {
     const status = useSelector(state => state.game.status)
 
     const openHandler = () => {
-        ws.send(build(packets.client.Login, { token: '' }))
+        ws.send(build(packets.client.Login, { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Zjg1ZTVlZDgyZjcxNDI0MTQ3MGRmMWYiLCJpYXQiOjE2MDMzNjc1MDIsImV4cCI6MTc2MTE1NTUwMn0.SKen-NxEQO_BD4UyyXhqeXI_AhuoU110MgnRDmEdrGw' }))
     }
 
     const messageHandler = ({ data }) => {
@@ -40,17 +40,22 @@ const QuizScreen = () => {
         }
     }, [])
 
+    const content = () => {
+        if (status === 1)
+            return <QuizWaitPlayers/>
+        else if (status === 2)
+            return <QuizQuestion/>
+        else if (status === 3)
+            return <QuizEnding/>
+    }
+
     return (
         <View style={styles.wrapper}>
             <View
                 style={status === 1 ? styles.container : styles.containerFullScreen}
             >
-                <HeaderQuiz/>
-                {
-                    status === 1
-                    ? <QuizWaitPlayers/>
-                    : <QuestionsQuiz/>
-                }
+                <QuizHeader/>
+                {content()}
                 <QuizChat/>
             </View>
         </View>

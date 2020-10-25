@@ -1,4 +1,12 @@
-import { ADD_CHAT_MESSAGE, GAME_INIT, GAME_ONLINE, SELECTED_ANSWER, SET_ANSWER, SET_NEW_QUESTION } from '../types'
+import {
+    ADD_CHAT_MESSAGE,
+    GAME_INIT,
+    GAME_ONLINE,
+    SELECTED_ANSWER,
+    SET_ANSWER,
+    SET_NEW_QUESTION,
+    UPDATE_STATUS
+} from '../types'
 
 export function gameInit (payload) {
     return { type: GAME_INIT, payload }
@@ -22,4 +30,11 @@ export function setAnswer (answer) {
 
 export function selectAnswer (id) {
     return { type: SELECTED_ANSWER, id }
+}
+
+export function updateStatus ({ id, state }) {
+    return {
+        type: UPDATE_STATUS,
+        payload: { id, state }
+    }
 }
