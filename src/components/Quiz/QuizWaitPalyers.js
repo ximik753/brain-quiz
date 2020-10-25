@@ -6,11 +6,11 @@ import { useSelector } from 'react-redux'
 
 const QuizWaitPlayers = () => {
     const [startTime, setStartTime] = useState(useSelector(state => state.game.startTime))
-    const hours = Math.trunc(startTime / 60)
+    const minutes = Math.trunc(startTime / 60)
     const seconds = startTime % 60
 
     const transformTime = () => startTime
-        ? `0${hours}:${seconds <= 9 ? `0${seconds}` : seconds}`
+        ? `0${minutes}:${seconds <= 9 ? `0${seconds}` : seconds}`
         : 'Викторина вот-вот начнется'
 
     useEffect(() => {

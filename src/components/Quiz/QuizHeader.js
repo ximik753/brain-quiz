@@ -10,8 +10,8 @@ import { packets } from '../../utils/quiz/packets'
 import { actions } from '../../utils/quiz/actions'
 import { build } from '../../utils/quiz/packetUtils'
 
-const HeaderQuiz = () => {
-    const online = useSelector(state => state.game.online)
+const QuizHeader = () => {
+    const { online, question, status } = useSelector(state => state.game)
     const { ws } = useContext(QuizContext)
 
     useEffect(() => {
@@ -32,7 +32,9 @@ const HeaderQuiz = () => {
                 />
                 <Text style={styles.onlineCount}>{online}</Text>
             </View>
-            <QuizTimer/>
+            {
+                (question && status === 2) && <QuizTimer/>
+            }
         </View>
     )
 }
@@ -57,4 +59,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default HeaderQuiz
+export default QuizHeader
