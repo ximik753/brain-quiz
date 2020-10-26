@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
         fontFamily: fonts.bold,
         color: colors.font.default,
         height: 110,
+        width: 290,
         marginTop: 10
     }
 })

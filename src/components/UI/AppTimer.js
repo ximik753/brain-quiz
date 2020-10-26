@@ -1,20 +1,60 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native'
 import { fonts } from '../../utils/fonts'
 import { colors } from '../../utils/colors'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHttp } from '../../hooks/http.hook'
+import { updateStatus } from '../../store/actions/game'
 
 const AppTimer = () => {
-    const nextGameDate = useSelector(state => state.user.nextGameDate)
+    const { nextGameDate } = useSelector(state => state.user)
+    const [timer, setTimer] = useState(nextGameDate)
     const time = new Date(nextGameDate * 1000)
     const hours = time.getHours()
-    const minutes = time.getMinutes()
+    let minutes = time.getMinutes()
 
-    const transformTime = () => `${hours <= 9 ? `0${hours}` : hours}:${minutes <= 9 ? `0${minutes}` : minutes}`
+    const transformTime = () => {
+        if (timer > 1800) {
+            return `${hours <= 9 ? `0${hours}` : hours}:${minutes <= 9 ? `0${minutes}` : minutes}`
+        }
+
+        minutes = Math.trunc(timer / 60)
+        const seconds = timer % 60
+        return `${minutes <= 9 ? `0${minutes}` : minutes}:${seconds <= 9 ? `0${seconds}` : seconds}`
+    }
+
+    useEffect(() => {
+        if (nextGameDate) {
+            const id = setInterval(() => {
+                if (Date.now() / 1000 - nextGameDate < 1800) {
+                    setTimer(Math.trunc(nextGameDate - (Date.now() / 1000)))
+                    clearInterval(id)
+                }
+            }, 1000)
+            return () => clearInterval(id)
+        }
+    }, [nextGameDate])
+
+    useEffect(() => {
+        if (timer) {
+            const id = setInterval(() => {
+                return setTimer(prevState => {
+                    if (prevState > 0) {
+                        return prevState - 1
+                    }
+
+                    clearInterval(id)
+                    return prevState
+                })
+            }, 1000)
+
+            return () => clearInterval(id)
+        }
+    }, [timer])
 
     return (
         <View style={styles.wrapper}>
-            <Text style={styles.title}>Следущая игра в:</Text>
+            <Text style={styles.title}>{nextGameDate > 1800 ? 'Следущая игра в:' : 'Следущая игра через:'}</Text>
             <View style={styles.timerWrapper}>
                 <Text style={styles.timer}>{transformTime()}</Text>
                 <Image
@@ -37,7 +77,9 @@ const styles = StyleSheet.create({
         color: colors.font.default
     },
     timerWrapper: {
-        position: 'relative'
+        position: 'relative',
+        justifyContent: 'center',
+        width: 80
     },
     timer: {
         fontFamily: fonts.black,

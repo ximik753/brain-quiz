@@ -6,6 +6,7 @@ import { TabsMainNavigation } from './TabsMainNavigation'
 import { useLogin } from '../hooks/login.hook'
 import { StackLoadingNavigator } from './StackLoadingNavigator'
 import { StackQuizNavigator } from './StackQuizNavigator'
+import { QuizState } from '../context/quiz/QuizState'
 
 export const AppNavigation = () => {
     const token = useSelector(state => state.user.token)
@@ -29,7 +30,11 @@ export const AppNavigation = () => {
     }
 
     if (status > 0) {
-        content = <StackQuizNavigator/>
+        content = (
+            <QuizState>
+                <StackQuizNavigator/>
+            </QuizState>
+        )
     }
 
     return (
