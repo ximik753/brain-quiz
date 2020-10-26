@@ -16,9 +16,10 @@ const QuizScreen = () => {
     const { ws } = useContext(QuizContext)
     const { dispatchPacket } = usePackets()
     const status = useSelector(state => state.game.status)
+    const token = useSelector(state => state.user.token)
 
     const openHandler = () => {
-        ws.send(build(packets.client.Login, { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Zjg1ZTVlZDgyZjcxNDI0MTQ3MGRmMWYiLCJpYXQiOjE2MDMzNjc1MDIsImV4cCI6MTc2MTE1NTUwMn0.SKen-NxEQO_BD4UyyXhqeXI_AhuoU110MgnRDmEdrGw' }))
+        ws.send(build(packets.client.Login, { token }))
     }
 
     const messageHandler = ({ data }) => {

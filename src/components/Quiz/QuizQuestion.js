@@ -16,7 +16,7 @@ const QuizQuestion = () => {
                         <Text style={styles.questionsCount}>{question.currentQuestionNumber} из {totalQuestions} вопросов</Text>
                         <Text style={{
                             ...styles.question,
-                            fontSize: (35 - (question.title.length / 60 * 10))
+                            fontSize: (35 - (question.title.length / 60 * 14))
                         }}>{question.title}</Text>
                         <QuizAnswers/>
                     </>

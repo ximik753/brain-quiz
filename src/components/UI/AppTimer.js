@@ -1,60 +1,37 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native'
 import { fonts } from '../../utils/fonts'
 import { colors } from '../../utils/colors'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHttp } from '../../hooks/http.hook'
 import { updateStatus } from '../../store/actions/game'
 
 const AppTimer = () => {
     const { nextGameDate } = useSelector(state => state.user)
-    const [timer, setTimer] = useState(nextGameDate)
-    const time = new Date(nextGameDate * 1000)
-    const hours = time.getHours()
-    let minutes = time.getMinutes()
+    const dispatch = useDispatch()
 
     const transformTime = () => {
-        if (timer > 1800) {
-            return `${hours <= 9 ? `0${hours}` : hours}:${minutes <= 9 ? `0${minutes}` : minutes}`
-        }
+        const time = new Date(nextGameDate * 1000)
+        const hours = time.getHours()
+        let minutes = time.getMinutes()
 
-        minutes = Math.trunc(timer / 60)
-        const seconds = timer % 60
-        return `${minutes <= 9 ? `0${minutes}` : minutes}:${seconds <= 9 ? `0${seconds}` : seconds}`
+        return `${hours <= 9 ? `0${hours}` : hours}:${minutes <= 9 ? `0${minutes}` : minutes}`
     }
 
     useEffect(() => {
         if (nextGameDate) {
             const id = setInterval(() => {
-                if (Date.now() / 1000 - nextGameDate < 1800) {
-                    setTimer(Math.trunc(nextGameDate - (Date.now() / 1000)))
+                if (nextGameDate - (Date.now() / 1000) < 0) {
                     clearInterval(id)
+                    dispatch(updateStatus({ id: 1 }))
                 }
             }, 1000)
             return () => clearInterval(id)
         }
     }, [nextGameDate])
 
-    useEffect(() => {
-        if (timer) {
-            const id = setInterval(() => {
-                return setTimer(prevState => {
-                    if (prevState > 0) {
-                        return prevState - 1
-                    }
-
-                    clearInterval(id)
-                    return prevState
-                })
-            }, 1000)
-
-            return () => clearInterval(id)
-        }
-    }, [timer])
-
     return (
         <View style={styles.wrapper}>
-            <Text style={styles.title}>{nextGameDate > 1800 ? 'Следущая игра в:' : 'Следущая игра через:'}</Text>
+            <Text style={styles.title}>{'Следущая игра в:'}</Text>
             <View style={styles.timerWrapper}>
                 <Text style={styles.timer}>{transformTime()}</Text>
                 <Image

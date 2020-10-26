@@ -5,27 +5,34 @@ import { fonts } from '../../utils/fonts'
 import { useSelector } from 'react-redux'
 
 const QuizWaitPlayers = () => {
-    const [startTime, setStartTime] = useState(useSelector(state => state.game.startTime))
+    const time = useSelector(state => state.game.startTime)
+    const [startTime, setStartTime] = useState(0)
     const minutes = Math.trunc(startTime / 60)
     const seconds = startTime % 60
 
     const transformTime = () => startTime
-        ? `0${minutes}:${seconds <= 9 ? `0${seconds}` : seconds}`
-        : 'Викторина вот-вот начнется'
+            ? `0${minutes}:${seconds <= 9 ? `0${seconds}` : seconds}`
+            : 'Викторина вот-вот начнется'
 
     useEffect(() => {
-        const id = setInterval(() => {
-            return setStartTime(prevState => {
-                if (prevState > 0) {
-                    return prevState - 1
-                }
+        if (time) {
+            const id = setInterval(() => {
+                return setStartTime(prevState => {
+                    if (prevState > 0) {
+                        return prevState - 1
+                    }
 
-                clearInterval(id)
-                return prevState
-            })
-        }, 1000)
-        return () => clearInterval(id)
-    }, [])
+                    clearInterval(id)
+                    return prevState
+                })
+            }, 1000)
+            return () => clearInterval(id)
+        }
+    }, [startTime, time])
+
+    useEffect(() => {
+        setStartTime(time)
+    }, [time])
 
     return (
         <View style={styles.wrapper}>
