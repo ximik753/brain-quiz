@@ -1,10 +1,43 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import { View, StyleSheet } from 'react-native'
 import AnswerItem from './AnswerItem'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectAnswer, setIqAnswers } from '../../store/actions/game'
+import { build } from '../../utils/quiz/packetUtils'
+import { packets } from '../../utils/quiz/packets'
+import { actions } from '../../utils/quiz/actions'
+import { QuizContext } from '../../context/quiz/quizContext'
+import { boosters } from '../../utils/quiz/boosters'
+import QuizNotification from './QuizNotification'
 
 const QuizAnswers = () => {
-    const { question, answer, selectedAnswer } = useSelector(state => state.game)
+    const { question, answer, selectedAnswer, iqAnswer } = useSelector(state => state.game)
+    const dispatch = useDispatch()
+    const { ws } = useContext(QuizContext)
+    const userBoosters = useSelector(state => state.user.boosters)
+    const [showNotification, setShowNotification] = useState(false)
+
+    const pressUseBoosterExtraLife = () => {
+        ws.send(build(packets.client.ClientCommands, { id: actions.useExtraLife }))
+        dispatch(setIqAnswers(true))
+    }
+
+    useEffect(() => {
+        if (answer.questionId === question.id && answer.id !== selectedAnswer && iqAnswer) {
+            const booster = userBoosters.find(item => item.booster._id === boosters.extraLife)
+            if (booster) {
+                setShowNotification(true)
+            }
+
+            dispatch(setIqAnswers(false))
+
+            return () => setShowNotification(false)
+        }
+    }, [answer, question.id])
+
+    useEffect(() => {
+        dispatch(selectAnswer(null))
+    }, [question])
 
     return (
         <>
@@ -29,6 +62,13 @@ const QuizAnswers = () => {
                         ))
                 }
             </View>
+            <QuizNotification
+                show={showNotification}
+                pressHandler={pressUseBoosterExtraLife}
+                closeHandler={() => setShowNotification(false)}
+            >
+                Вы хотите применить бустер доп. жизнь?
+            </QuizNotification>
         </>
     )
 }

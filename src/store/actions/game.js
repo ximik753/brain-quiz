@@ -4,6 +4,7 @@ import {
     GAME_ONLINE,
     SELECTED_ANSWER,
     SET_ANSWER,
+    SET_IQ_ANSWERS,
     SET_NEW_QUESTION,
     UPDATE_STATUS
 } from '../types'
@@ -37,4 +38,8 @@ export function updateStatus ({ id, state }) {
         type: UPDATE_STATUS,
         payload: { id, state }
     }
+}
+
+export function setIqAnswers (value) {
+    return { type: SET_IQ_ANSWERS, payload: value }
 }
