@@ -17,7 +17,7 @@ const initialState = {
     question: null,
     answer: {},
     selectedAnswer: 0,
-    totalQuestions: 12,
+    totalQuestions: 0,
     iqAnswer: true
 }
 
