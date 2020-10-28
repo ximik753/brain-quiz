@@ -5,6 +5,7 @@ export function setUserToken (token) {
 }
 
 export function userInit (data) {
+    delete data.status
     return { type: USER_INIT, payload: data }
 }
 
