@@ -6,13 +6,14 @@ import { QuizContext } from '../../context/quiz/quizContext'
 import { build } from '../../utils/quiz/packetUtils'
 import { packets } from '../../utils/quiz/packets'
 import { actions } from '../../utils/quiz/actions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectAnswer } from '../../store/actions/game'
 
-const AnswerItem = ({ children, btnStyle, id, disable }) => {
+const AnswerItem = ({ children, btnStyle, id }) => {
     const { ws } = useContext(QuizContext)
     const [style, setStyle] = useState('')
     const dispatch = useDispatch()
+    const { selectedAnswer } = useSelector(state => state.game)
 
     const pressHandler = () => {
         setStyle('selected')
@@ -24,7 +25,7 @@ const AnswerItem = ({ children, btnStyle, id, disable }) => {
 
     return (
         <TouchableOpacity
-            onPress={disable ? noop : pressHandler}
+            onPress={selectedAnswer ? noop : pressHandler}
             activeOpacity={1.0}
         >
             <View style={{ ...styles.answer, ...styles[btnStyle || style || ''] }}>

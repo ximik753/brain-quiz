@@ -48,7 +48,6 @@ const QuizAnswers = () => {
                             <Fragment key={_id}>
                                 <AnswerItem
                                     id={_id}
-                                    disable={true}
                                     btnStyle={answer.id === _id ? 'right' : selectedAnswer === _id ? 'wrong' : ''}
                                 >
                                     {text}
