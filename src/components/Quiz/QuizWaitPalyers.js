@@ -7,13 +7,13 @@ import { QuizContext } from '../../context/quiz/quizContext'
 import { build } from '../../utils/quiz/packetUtils'
 import { packets } from '../../utils/quiz/packets'
 import { actions } from '../../utils/quiz/actions'
-import { useQuizNotification } from '../../hooks/quizNotification.hook'
+import QuizNotification from './QuizNotification'
+import { boosters } from '../../utils/quiz/boosters'
 
 const QuizWaitPlayers = () => {
     const time = useSelector(state => state.game.startTime)
     const [startTime, setStartTime] = useState(0)
-    const boosters = useSelector(state => state.user.boosters)
-    const { create } = useQuizNotification()
+    const userBoosters = useSelector(state => state.user.boosters)
     const { ws } = useContext(QuizContext)
     const [showNotification, setShowNotification] = useState(false)
 
@@ -49,17 +49,25 @@ const QuizWaitPlayers = () => {
     }, [time])
 
     useEffect(() => {
-        const booster = boosters.find(item => item.booster._id === '5f809d93a45be03a7c248b98')
+        const booster = userBoosters.find(item => item.booster._id === boosters.boosterIq)
         if (booster) {
             setShowNotification(true)
-            create('Вы хотите применить бустер ускорения IQ?', pressUseBoosterIq, showNotification)
         }
+
+        return () => setShowNotification(false)
     }, [])
 
     return (
         <View style={styles.wrapper}>
             <Text style={styles.titleTimer}>Ожидаем игроков:</Text>
             <Text style={styles.timer}>{transformTime()}</Text>
+            <QuizNotification
+                show={showNotification}
+                pressHandler={pressUseBoosterIq}
+                closeHandler={() => setShowNotification(false)}
+            >
+                Вы хотите применить бустер ускорения IQ?
+            </QuizNotification>
         </View>
     )
 }
