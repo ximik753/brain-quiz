@@ -26,7 +26,10 @@ const QuizWaitPlayers = () => {
             : 'Викторина вот-вот начнется'
     }
 
-    const pressUseBoosterIq = () => ws.send(build(packets.client.ClientCommands, { id: actions.useBoosterIq }))
+    const pressUseBoosterIq = () => {
+        setShowNotification(false)
+        ws.send(build(packets.client.ClientCommands, { id: actions.useBoosterIq }))
+    }
 
     useEffect(() => {
         if (time) {

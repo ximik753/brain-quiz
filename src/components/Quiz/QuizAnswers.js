@@ -18,6 +18,7 @@ const QuizAnswers = () => {
     const [showNotification, setShowNotification] = useState(false)
 
     const pressUseBoosterExtraLife = () => {
+        setShowNotification(false)
         ws.send(build(packets.client.ClientCommands, { id: actions.useExtraLife }))
         dispatch(setIqAnswers(true))
     }
