@@ -9,6 +9,7 @@ export const packets = Object.freeze({
         ChatMessage: 20300,
         NewQuestion: 20400,
         RightAnswer: 20401,
-        UpdateStatus: 20402
+        UpdateStatus: 20402,
+        GameWinners: 20403
     }
 })

@@ -5,7 +5,7 @@ import {
     SELECTED_ANSWER,
     SET_ANSWER,
     SET_IQ_ANSWERS,
-    SET_NEW_QUESTION,
+    SET_NEW_QUESTION, SET_WINNERS_GAME,
     UPDATE_STATUS
 } from '../types'
 
@@ -18,7 +18,8 @@ const initialState = {
     answer: {},
     selectedAnswer: 0,
     totalQuestions: 0,
-    iqAnswer: true
+    iqAnswer: true,
+    winners: null
 }
 
 const handlers = {
@@ -30,6 +31,7 @@ const handlers = {
     [SELECTED_ANSWER]: (state, { id }) => ({ ...state, selectedAnswer: id }),
     [UPDATE_STATUS]: (state, { payload }) => ({ ...state, status: payload.id, ...payload.state }),
     [SET_IQ_ANSWERS]: (state, { payload }) => ({ ...state, iqAnswer: payload }),
+    [SET_WINNERS_GAME]: (state, { winners }) => ({ ...state, winners }),
     DEFAULT: state => state
 }
 

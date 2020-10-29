@@ -5,7 +5,7 @@ import {
     SELECTED_ANSWER,
     SET_ANSWER,
     SET_IQ_ANSWERS,
-    SET_NEW_QUESTION,
+    SET_NEW_QUESTION, SET_WINNERS_GAME,
     UPDATE_STATUS
 } from '../types'
 
@@ -42,4 +42,8 @@ export function updateStatus ({ id, state }) {
 
 export function setIqAnswers (value) {
     return { type: SET_IQ_ANSWERS, payload: value }
+}
+
+export function setWinnersGame ({ winners }) {
+    return { type: SET_WINNERS_GAME, winners }
 }

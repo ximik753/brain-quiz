@@ -1,6 +1,14 @@
 import { useDispatch } from 'react-redux'
 import { packets } from '../utils/quiz/packets'
-import { addChatMessage, gameInit, setAnswer, setGameOnline, setNewQuestion, updateStatus } from '../store/actions/game'
+import {
+    addChatMessage,
+    gameInit,
+    setAnswer,
+    setGameOnline,
+    setNewQuestion,
+    setWinnersGame,
+    updateStatus
+} from '../store/actions/game'
 
 export const usePackets = () => {
     const dispatch = useDispatch()
@@ -24,6 +32,9 @@ export const usePackets = () => {
                 break
             case packets.server.UpdateStatus:
                 dispatch(updateStatus(payload))
+                break
+            case packets.server.GameWinners:
+                dispatch(setWinnersGame(payload))
         }
     }
 
