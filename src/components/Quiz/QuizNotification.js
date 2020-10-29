@@ -57,10 +57,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     button: {
-        width: 150
+        width: '45%'
     },
     buttonText: {
-        fontSize: 16
+        fontSize: 15
     }
 })
 
