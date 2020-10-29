@@ -9,7 +9,7 @@ import { actions } from '../../utils/quiz/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectAnswer } from '../../store/actions/game'
 
-const AnswerItem = ({ children, btnStyle, id }) => {
+const AnswerItem = ({ children, btnStyle, id, disabled }) => {
     const { ws } = useContext(QuizContext)
     const [style, setStyle] = useState('')
     const dispatch = useDispatch()
@@ -25,7 +25,7 @@ const AnswerItem = ({ children, btnStyle, id }) => {
 
     return (
         <TouchableOpacity
-            onPress={selectedAnswer ? noop : pressHandler}
+            onPress={(selectedAnswer || disabled) ? noop : pressHandler}
             activeOpacity={1.0}
         >
             <View style={{ ...styles.answer, ...styles[btnStyle || style || ''] }}>

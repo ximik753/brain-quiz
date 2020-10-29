@@ -50,6 +50,7 @@ const QuizAnswers = () => {
                                 <AnswerItem
                                     id={_id}
                                     btnStyle={answer.id === _id ? 'right' : selectedAnswer === _id ? 'wrong' : ''}
+                                    disabled={true}
                                 >
                                     {text}
                                 </AnswerItem>
