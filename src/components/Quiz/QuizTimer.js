@@ -4,6 +4,7 @@ import { Circle, Svg, G } from 'react-native-svg'
 import { fonts } from '../../utils/fonts'
 import { colors } from '../../utils/colors'
 import { useSelector } from 'react-redux'
+import Sound from 'react-native-sound'
 
 const QuizTimer = () => {
     const question = useSelector(state => state.game.question)
@@ -20,6 +21,7 @@ const QuizTimer = () => {
             const id = setInterval(() => {
                 setProgress(prevState => {
                     if (prevState === 0) {
+                        const sound = new Sound('timer_ended.mp3', Sound.MAIN_BUNDLE, () => sound.play())
                         clearInterval(id)
                         return 0
                     }

@@ -9,6 +9,7 @@ import { packets } from '../../utils/quiz/packets'
 import { actions } from '../../utils/quiz/actions'
 import QuizNotification from './QuizNotification'
 import { boosters } from '../../utils/quiz/boosters'
+import Sound from 'react-native-sound'
 
 const QuizWaitPlayers = () => {
     const time = useSelector(state => state.game.startTime)
@@ -58,6 +59,12 @@ const QuizWaitPlayers = () => {
         }
 
         return () => setShowNotification(false)
+    }, [])
+
+    useEffect(() => {
+        const sound = new Sound('quiz_main_wait_players.mp3', Sound.MAIN_BUNDLE, () => sound.play())
+
+        return () => sound.stop()
     }, [])
 
     return (
