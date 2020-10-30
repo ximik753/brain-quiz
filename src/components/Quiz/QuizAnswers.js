@@ -11,7 +11,7 @@ import { boosters } from '../../utils/quiz/boosters'
 import QuizNotification from './QuizNotification'
 
 const QuizAnswers = () => {
-    const { question, answer, selectedAnswer, iqAnswer } = useSelector(state => state.game)
+    const { question, answer, selectedAnswer, iqAnswer, totalQuestions } = useSelector(state => state.game)
     const dispatch = useDispatch()
     const { ws } = useContext(QuizContext)
     const userBoosters = useSelector(state => state.user.boosters)
@@ -24,7 +24,11 @@ const QuizAnswers = () => {
     }
 
     useEffect(() => {
-        if (answer.questionId === question.id && answer.id !== selectedAnswer && iqAnswer) {
+        if (answer.questionId === question.id
+            && answer.id !== selectedAnswer
+            && iqAnswer
+            && totalQuestions !== question.currentQuestionNumber
+        ) {
             const booster = userBoosters.find(item => item.booster._id === boosters.extraLife)
             if (booster) {
                 setShowNotification(true)
