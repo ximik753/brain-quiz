@@ -2,7 +2,7 @@ import React, { Fragment, useContext, useEffect, useState } from 'react'
 import { View, StyleSheet } from 'react-native'
 import AnswerItem from './AnswerItem'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectAnswer, setIqAnswers } from '../../store/actions/game'
+import { selectAnswer, setIqAnswers, setUseExtraLifeBooster } from '../../store/actions/game'
 import { build } from '../../utils/quiz/packetUtils'
 import { packets } from '../../utils/quiz/packets'
 import { actions } from '../../utils/quiz/actions'
@@ -11,7 +11,7 @@ import { boosters } from '../../utils/quiz/boosters'
 import QuizNotification from './QuizNotification'
 
 const QuizAnswers = () => {
-    const { question, answer, selectedAnswer, iqAnswer, totalQuestions } = useSelector(state => state.game)
+    const { question, answer, selectedAnswer, iqAnswer, totalQuestions, useExtraLifeBooster } = useSelector(state => state.game)
     const dispatch = useDispatch()
     const { ws } = useContext(QuizContext)
     const userBoosters = useSelector(state => state.user.boosters)
@@ -21,6 +21,7 @@ const QuizAnswers = () => {
         setShowNotification(false)
         ws.send(build(packets.client.ClientCommands, { id: actions.useExtraLife }))
         dispatch(setIqAnswers(true))
+        dispatch(setUseExtraLifeBooster())
     }
 
     useEffect(() => {
@@ -30,7 +31,7 @@ const QuizAnswers = () => {
             && totalQuestions !== question.currentQuestionNumber
         ) {
             const booster = userBoosters.find(item => item.booster._id === boosters.extraLife)
-            if (booster) {
+            if (booster && !useExtraLifeBooster) {
                 setShowNotification(true)
             }
 

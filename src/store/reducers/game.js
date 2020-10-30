@@ -6,7 +6,7 @@ import {
     SET_ANSWER,
     SET_IQ_ANSWERS,
     SET_NEW_QUESTION, SET_WINNERS_GAME,
-    UPDATE_STATUS
+    UPDATE_STATUS, USE_EXTRA_LIFE_BOOSTER
 } from '../types'
 
 const initialState = {
@@ -19,7 +19,8 @@ const initialState = {
     selectedAnswer: 0,
     totalQuestions: 0,
     iqAnswer: true,
-    winners: null
+    winners: null,
+    useExtraLifeBooster: false
 }
 
 const handlers = {
@@ -32,6 +33,7 @@ const handlers = {
     [UPDATE_STATUS]: (state, { payload }) => ({ ...state, status: payload.id, ...payload.state }),
     [SET_IQ_ANSWERS]: (state, { payload }) => ({ ...state, iqAnswer: payload }),
     [SET_WINNERS_GAME]: (state, { winners }) => ({ ...state, winners }),
+    [USE_EXTRA_LIFE_BOOSTER]: (state) => ({ ...state, useExtraLifeBooster: true }),
     DEFAULT: state => state
 }
 

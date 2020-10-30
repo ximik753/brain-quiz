@@ -6,7 +6,7 @@ import {
     SET_ANSWER,
     SET_IQ_ANSWERS,
     SET_NEW_QUESTION, SET_WINNERS_GAME,
-    UPDATE_STATUS
+    UPDATE_STATUS, USE_EXTRA_LIFE_BOOSTER
 } from '../types'
 
 export function gameInit (payload) {
@@ -46,4 +46,8 @@ export function setIqAnswers (value) {
 
 export function setWinnersGame ({ winners }) {
     return { type: SET_WINNERS_GAME, winners }
+}
+
+export function setUseExtraLifeBooster () {
+    return { type: USE_EXTRA_LIFE_BOOSTER }
 }
