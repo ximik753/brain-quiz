@@ -62,7 +62,10 @@ const QuizWaitPlayers = () => {
     }, [])
 
     useEffect(() => {
-        const sound = new Sound('quiz_main_wait_players.mp3', Sound.MAIN_BUNDLE, () => sound.play())
+        const sound = new Sound('quiz_main_wait_players.mp3', Sound.MAIN_BUNDLE, () => {
+            sound.play()
+            sound.setNumberOfLoops(-1)
+        })
 
         return () => sound.stop()
     }, [])
