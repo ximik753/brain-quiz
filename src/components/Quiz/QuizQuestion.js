@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, StyleSheet, Text, ActivityIndicator } from 'react-native'
 import { fonts } from '../../utils/fonts'
 import { colors } from '../../utils/colors'
 import { useSelector } from 'react-redux'
 import QuizAnswers from './QuizAnswers'
+import Sound from 'react-native-sound'
 
 const QuizQuestion = () => {
     const { totalQuestions, question } = useSelector(state => state.game)
+
+    useEffect(() => {
+        if (question) {
+            const sound = new Sound('new_question.mp3', Sound.MAIN_BUNDLE, () => sound.play())
+        }
+    }, [question])
 
     return (
         <View style={question ? styles.wrapper : styles.wrapperLoading}>
@@ -16,7 +23,7 @@ const QuizQuestion = () => {
                         <Text style={styles.questionsCount}>{question.currentQuestionNumber} из {totalQuestions} вопросов</Text>
                         <Text style={{
                             ...styles.question,
-                            fontSize: (35 - (question.title.length / 60 * 14))
+                            fontSize: (34 - (question.title.length / 80 * 16))
                         }}>{question.title}</Text>
                         <QuizAnswers/>
                     </>

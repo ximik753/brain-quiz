@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { StyleSheet, FlatList, View, TextInput, TouchableWithoutFeedback } from 'react-native'
 import { useSelector } from 'react-redux'
 import { id } from '../../utils/idGenerator'
@@ -9,12 +9,19 @@ import { QuizContext } from '../../context/quiz/quizContext'
 import { build } from '../../utils/quiz/packetUtils'
 import { packets } from '../../utils/quiz/packets'
 import { actions } from '../../utils/quiz/actions'
+import Sound from 'react-native-sound'
 
 const QuizChat = () => {
     const flatList = useRef(null)
     const chat = useSelector(state => state.game.chat)
     const [message, setMessage] = useState('')
     const { ws } = useContext(QuizContext)
+
+    useEffect(() => {
+        if (chat.length) {
+            const sound = new Sound('new_message.mp3', Sound.MAIN_BUNDLE, () => sound.play())
+        }
+    }, [chat])
 
     const sendMessageHandler = () => {
         if (message.trim()) {

@@ -9,6 +9,7 @@ import { actions } from '../../utils/quiz/actions'
 import { QuizContext } from '../../context/quiz/quizContext'
 import { boosters } from '../../utils/quiz/boosters'
 import QuizNotification from './QuizNotification'
+import Sound from 'react-native-sound'
 
 const QuizAnswers = () => {
     const { question, answer, selectedAnswer, iqAnswer, totalQuestions, useExtraLifeBooster } = useSelector(state => state.game)
@@ -44,6 +45,16 @@ const QuizAnswers = () => {
     useEffect(() => {
         dispatch(selectAnswer(null))
     }, [question])
+
+    useEffect(() => {
+        if (answer.id) {
+            if (answer.id === selectedAnswer) {
+                const sound = new Sound('right_answer.mp3', Sound.MAIN_BUNDLE, () => sound.play())
+            } else {
+                const sound = new Sound('incorrect_answer.mp3', Sound.MAIN_BUNDLE, () => sound.play())
+            }
+        }
+    }, [answer])
 
     return (
         <>
