@@ -24,8 +24,10 @@ const QuizChat = () => {
     }, [chat])
 
     const sendMessageHandler = () => {
-        ws.send(build(packets.client.ClientCommands, { id: actions.chatMessage, data: { message } }))
-        setMessage('')
+        if (message.trim()) {
+            ws.send(build(packets.client.ClientCommands, { id: actions.chatMessage, data: { message } }))
+            setMessage('')
+        }
     }
 
     const renderItem = ({ item }) => (
