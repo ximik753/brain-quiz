@@ -4,7 +4,7 @@ import { fonts } from '../../utils/fonts'
 import { Button } from 'react-native-paper'
 import { colors } from '../../utils/colors'
 
-const AppButton = ({ text, pressHandler, disabled, loading, styleButton }) => {
+const AppButton = ({ text, pressHandler, disabled, loading, styleButton, styleText }) => {
     return (
         <Button
             style={{ ...styles.button, ...styleButton }}
@@ -12,7 +12,7 @@ const AppButton = ({ text, pressHandler, disabled, loading, styleButton }) => {
             loading={loading || false}
             onPress={pressHandler}
             uppercase={false}
-            labelStyle={styles.text}
+            labelStyle={{ ...styles.text, ...styleText }}
             color={colors.border.yellow}
             mode="contained"
         >

@@ -6,7 +6,8 @@ const initialState = {
     boosters: [],
     coins: 0,
     stats: {},
-    token: null
+    token: null,
+    nextGameDate: 0
 }
 
 const handlers = {

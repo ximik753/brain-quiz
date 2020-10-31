@@ -5,9 +5,12 @@ import { useSelector } from 'react-redux'
 import { TabsMainNavigation } from './TabsMainNavigation'
 import { useLogin } from '../hooks/login.hook'
 import { StackLoadingNavigator } from './StackLoadingNavigator'
+import { StackQuizNavigator } from './StackQuizNavigator'
+import { QuizState } from '../context/quiz/QuizState'
 
 export const AppNavigation = () => {
     const token = useSelector(state => state.user.token)
+    const status = useSelector(state => state.game.status)
     const { autoLogin, ready } = useLogin()
 
     useEffect(() => {
@@ -23,6 +26,14 @@ export const AppNavigation = () => {
             token
                 ? <TabsMainNavigation/>
                 : <StackAuthNavigator/>
+        )
+    }
+
+    if (status > 0) {
+        content = (
+            <QuizState>
+                <StackQuizNavigator/>
+            </QuizState>
         )
     }
 

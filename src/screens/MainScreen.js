@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux'
 import { useHttp } from '../hooks/http.hook'
 import { userInit } from '../store/actions/user'
 import { useAlert } from '../hooks/alert.hook'
+import { updateStatus } from '../store/actions/game'
 
 const MainScreen = () => {
     const { get, loading } = useHttp()
@@ -20,7 +21,13 @@ const MainScreen = () => {
 
     useEffect(() => {
         fetchData()
-            .then(data => dispatch(userInit(data)))
+            .then(data => {
+                if (data.status) {
+                    dispatch(updateStatus({ id: 1 }))
+                }
+
+                dispatch(userInit(data))
+            })
             .catch(e => create(e.message))
     }, [])
 

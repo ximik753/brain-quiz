@@ -1,8 +1,9 @@
-export const colors = {
+export const colors = Object.freeze({
     font: {
         default: '#FFF',
         black: '#000',
-        boosterCount: '#FFC634'
+        boosterCount: '#FFC634',
+        questionCount: '#DDDDDD'
     },
     background: {
         default: '#421B75',
@@ -13,9 +14,15 @@ export const colors = {
         leaderboardItem: '#4D1C8D',
         loader: '#FFC634',
         avatarWrapper: '#404040',
-        dropdown: '#FFF'
+        dropdown: '#FFF',
+        messageSendBtn: '#EFEFEF',
+        selectedAnswer: '#c69f33',
+        rightAnswer: '#098006',
+        wrongAnswer: '#bf1414'
     },
     border: {
-        yellow: '#FFC634'
+        yellow: '#FFC634',
+        timer: '#BABABA',
+        progress: '#FFF'
     }
-}
+})
