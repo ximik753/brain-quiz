@@ -1,26 +1,26 @@
 import React from 'react'
-import { Button } from 'react-native-paper'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, TouchableOpacity, Text } from 'react-native'
 import { fonts } from '../../../utils/fonts'
-import { colors } from '../../../utils/colors'
 
 const AppDropdownItem = ({ children, pressHandler }) => {
     return (
-        <Button
+        <TouchableOpacity
+            activeOpacity={0.9}
             onPress={pressHandler}
-            uppercase={false}
-            color={colors.font.black}
-            mode="text"
-            labelStyle={styles.text}
-        >{children}</Button>
+            style={styles.button}
+        >
+            <Text style={styles.text}>{children}</Text>
+        </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     text: {
         fontFamily: fonts.medium,
-        fontSize: 12,
-        letterSpacing: 0
+        fontSize: 12
+    },
+    button: {
+        padding: 3
     }
 })
 
