@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import { Circle, Svg, G } from 'react-native-svg'
-import { fonts } from '../../utils/fonts'
-import { colors } from '../../utils/colors'
+import { fonts } from '../../../utils/fonts'
+import { colors } from '../../../utils/colors'
 import { useSelector } from 'react-redux'
 
 const QuizTimer = () => {

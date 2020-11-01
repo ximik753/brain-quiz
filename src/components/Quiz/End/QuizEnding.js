@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, FlatList, ActivityIndicator } from 'react-native'
-import { colors } from '../../utils/colors'
-import { fonts } from '../../utils/fonts'
+import { colors } from '../../../utils/colors'
+import { fonts } from '../../../utils/fonts'
 import { useSelector } from 'react-redux'
 import QuizWinnerItem from './QuizWinnerItem'
 

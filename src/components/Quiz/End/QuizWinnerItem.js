@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, StyleSheet, Image, Text } from 'react-native'
-import { avatars } from '../../utils/avatars'
-import { fonts } from '../../utils/fonts'
-import { colors } from '../../utils/colors'
+import { avatars } from '../../../utils/avatars'
+import { fonts } from '../../../utils/fonts'
+import { colors } from '../../../utils/colors'
 
 const QuizWinnerItem = ({ name, avatar }) => {
     return (

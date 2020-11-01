@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
-import { colors } from '../../utils/colors'
-import { fonts } from '../../utils/fonts'
-import { QuizContext } from '../../context/quiz/quizContext'
-import { build } from '../../utils/quiz/packetUtils'
-import { packets } from '../../utils/quiz/packets'
-import { actions } from '../../utils/quiz/actions'
+import { colors } from '../../../utils/colors'
+import { fonts } from '../../../utils/fonts'
+import { QuizContext } from '../../../context/quiz/quizContext'
+import { build } from '../../../utils/quiz/packetUtils'
+import { packets } from '../../../utils/quiz/packets'
+import { actions } from '../../../utils/quiz/actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectAnswer } from '../../store/actions/game'
+import { selectAnswer } from '../../../store/actions/game'
 
 const AnswerItem = ({ children, btnStyle, id, disabled }) => {
     const { ws } = useContext(QuizContext)

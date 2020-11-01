@@ -2,15 +2,15 @@ import React, { useContext, useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { colors } from '../utils/colors'
 import QuizHeader from '../components/Quiz/QuizHeader'
-import QuizQuestion from '../components/Quiz/QuizQuestion'
+import QuizQuestion from '../components/Quiz/Play/QuizQuestion'
 import QuizChat from '../components/Quiz/QuizChat'
 import { QuizContext } from '../context/quiz/quizContext'
 import { packets } from '../utils/quiz/packets'
 import { build, parse } from '../utils/quiz/packetUtils'
-import QuizWaitPlayers from '../components/Quiz/QuizWaitPalyers'
+import QuizWaitPlayers from '../components/Quiz/Wait/QuizWaitPalyers'
 import { useSelector } from 'react-redux'
 import { usePackets } from '../hooks/packets.hook'
-import QuizEnding from '../components/Quiz/QuizEnding'
+import QuizEnding from '../components/Quiz/End/QuizEnding'
 
 const QuizScreen = () => {
     const { ws } = useContext(QuizContext)
