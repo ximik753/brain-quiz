@@ -1,12 +1,14 @@
 import React from 'react'
 import { StyleSheet, Image, Dimensions } from 'react-native'
 import Carousel from 'react-native-snap-carousel'
+import UpdateItem from './CarouserlItems/UpdateItem'
+import FaqItem from './CarouserlItems/FaqItem'
 
 const AppCarousel = () => {
     const items = [
-        <Image style={styles.item} source={require('../../assets/images/main/carousel/todo.png')}/>,
+        <UpdateItem/>,
         <Image style={styles.item} source={require('../../assets/images/main/carousel/timetable.png')}/>,
-        <Image style={styles.item} source={require('../../assets/images/main/carousel/update.png')}/>
+        <FaqItem/>
     ]
 
     const renderItems = ({ item }) => item
