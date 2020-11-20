@@ -1,8 +1,8 @@
 import React from 'react'
 import { StyleSheet, Image, Dimensions } from 'react-native'
 import Carousel from 'react-native-snap-carousel'
-import UpdateItem from './CarouserlItems/UpdateItem'
-import FaqItem from './CarouserlItems/FaqItem'
+import UpdateItem from './CarouselItems/UpdateItem'
+import FaqItem from './CarouselItems/FaqItem'
 
 const AppCarousel = () => {
     const items = [
